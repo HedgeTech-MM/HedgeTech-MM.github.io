@@ -1,0 +1,1326 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face {
+  font-family: octicons-anchor;
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+    color:#333;
+    background:#fff;
+}
+
+body .markdown-body {
+    padding: 45px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
+
+pre {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body input {
+  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body .octicon {
+  font: normal normal normal 16px/1 octicons-anchor;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h1 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h3 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h5 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body h6 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .pl-c {
+  color: #969896;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0086b3;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #795da3;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #333;
+}
+
+.markdown-body .pl-ent {
+  color: #63a35c;
+}
+
+.markdown-body .pl-k {
+  color: #a71d5d;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #183691;
+}
+
+.markdown-body .pl-v {
+  color: #ed6a43;
+}
+
+.markdown-body .pl-id {
+  color: #b52a1d;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.markdown-body .pl-ml {
+  color: #693a17;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mq {
+  color: #008080;
+}
+
+.markdown-body .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.markdown-body .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mo {
+  color: #1d3e81;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .plan-price-unit {
+  color: #767676;
+  font-weight: normal;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .plan-choice {
+  padding: 15px;
+  padding-left: 40px;
+  display: block;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  font-weight: normal;
+  background-color: #fafafa;
+}
+
+.markdown-body .plan-choice.open {
+  background-color: #fff;
+}
+
+.markdown-body .plan-choice.open .plan-choice-seat-breakdown {
+  display: block;
+}
+
+.markdown-body .plan-choice-free {
+  border-radius: 3px 3px 0 0;
+}
+
+.markdown-body .plan-choice-paid {
+  border-radius: 0 0 3px 3px;
+  border-top: 0;
+  margin-bottom: 20px;
+}
+
+.markdown-body .plan-choice-radio {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+}
+
+.markdown-body .plan-choice-exp {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.markdown-body .plan-choice-seat-breakdown {
+  margin-top: 10px;
+  display: none;
+}
+
+.markdown-body :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+
+@media print {
+  body .markdown-body {
+    padding: 0;
+    border: none;
+  }
+}
+</style><title>HTClient Documentation - Copy</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-htclient-documentation" class="anchor" href="#htclient-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient Documentation</h1>
+<h2>
+<a id="user-content-introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+<p>HTClient is a suite of powerful algorithms designed by our experienced algorithmic traders.
+It can be operated from a simple User Interface in order to perform various complex tasks such as market making and many more. HTClient is particularly suitable for token issuers, exchanges, broker/dealers and market makers.
+Token issuers can operate the systems within their company, on all exchanges they are listed on.
+Exchanges can operate the systems in-house for their main pairs as well as all other altcoins listed on their platform.
+Broker/dealers can add to the services they offer with an all-in-one liquidity provision system.
+Market makers can chose to either use the algorithms designed by HedgeTech or to design their own custom scripts, benefiting from our integration capabilities and server infrastructure.
+The scripts are suitable for any market environment: major coins, altcoins, security tokens, perpetual contracts and all other digital assets.</p>
+<p>The documentation helps you navigate through the infrastructure of the HTClient User Interface (UI). We recommend to read this document while having the HTClient UI opened.
+There are two key components of HTClient: Accounts and Scripts. Accounts refer to your exchange accounts, Scripts refers the algorithms (or strategies) you run through the Software as a Service (SaaS).
+Please make sure to follow accurately the syntax (such as upper and lower cases) and instructions as listed below:</p>
+<p><code>str</code>: text, e.g. <code>some text</code></p>
+<p><code>int</code>: integer number, e.g. <code>1</code></p>
+<p><code>float</code>: decimal number, e.g. <code>1.1</code></p>
+<p><code>bool</code>: <code>True</code> or <code>False</code></p>
+<p><code>expression</code>: the expression of a function that is calculated with the following operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>(</code>, <code>)</code> and the following components:</p>
+<ul>
+<li>
+<code>ask</code>: The lowest ask price</li>
+<li>
+<code>bid</code>: The highest bid price</li>
+<li>
+<code>mid</code>: The middle price between the lowest ask and the highest bid</li>
+<li>
+<code>unit</code>: The base price increment</li>
+</ul>
+<p>e.g. <code>bid+unit</code> will return the price that is one base price increment higher than the highest bid</p>
+<h2>
+<a id="user-content-windows-installation-note" class="anchor" href="#windows-installation-note" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows Installation Note</h2>
+<p>After downloading HTClient at <a href="http://www.hedgetech.io" rel="nofollow">www.hedgetech.io</a>, the first time you run HTClient.exe, a message might show up saying that Windows Defender Smartscreen has protected your PC. If that is the case, please click <code>More info</code> and if the developer shows <code>HedgeTech LLC</code>, you can safely select <code>Run Anyway</code>. The next time you open HTClient.exe, you do not have to take this extra step.</p>
+<h2>
+<a id="user-content-ips" class="anchor" href="#ips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IPs</h2>
+<p>For security reasons, our servers use non-static IPs. In order to use the SaaS, make sure to whitelist all IPs by not filling any IP under the UI whitelist field on your exchange accounts. If the exchanges do not provide this feature on their UI, please get in touch with them directly.</p>
+<h2>
+<a id="user-content-strategy-catalog" class="anchor" href="#strategy-catalog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Strategy Catalog</h2>
+<h4>
+<a id="user-content-script-class-maker-strategy" class="anchor" href="#script-class-maker-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Class: Maker Strategy</h4>
+<p>symbol: <code>maker</code></p>
+<p>The <code>maker</code> script class maintains a number of orders on both the buy and sell sides for a currency pair. The <code>maker</code> script class lets the price behave according to the supply and demand in the market and adjusts the orders maintained automatically: when people sell, the price will move down; when people buy, the price will move up. Thus, the <code>maker</code> script class provides liquidity to the market, it narrows the market spread and it makes profits from the spread.</p>
+<p>This script class only uses main account.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>Market symbol of the base currency</td>
+<td>
+<code>str</code>, e.g. <code>eth</code> for the market TokenName/ETH</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>Market symbol of the quote currency</td>
+<td>
+<code>str</code>, e.g. <code>usdt</code> for the market TokenName/ETH</td>
+</tr>
+<tr>
+<td>baseName (Optional)</td>
+<td>Full name of the base currency, shall be specified if multiple currencies listed as the same symbol on CoinGecko, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>quoteName (Optional)</td>
+<td>Full name of the quote currency, shall be specified if multiple currencies listed as the same symbol on CoinGecko, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>levels</td>
+<td>Number of orders maintained on each side of the order book</td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td>aveVolume</td>
+<td>Average order volume (or amount) in quote currency to be placed on each order</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>randomness</td>
+<td>The desired degree of randomness for the volume (or amount) of your orders</td>
+<td>
+<code>float</code>, between 0 and 1, 0 being no randomess and 1 being maximum randomness</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>The distance between the first ask order and the first bid order maintained. It is recommended to set a spread of at least 3 x density and that (spread - density) exceeds 2 x trading fees.</td>
+<td>
+<code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+</tr>
+<tr>
+<td>density</td>
+<td>The distance between the orders placed within the same side of the order book. It is recommended to set a spread of at least 3 x density and that (spread - density) exceeds 2 x trading fees.</td>
+<td>
+<code>float</code>, percentage, e.g. <code>0.002</code> means 0.2%</td>
+</tr>
+<tr>
+<td>cutlossBase (Optional)</td>
+<td>The cutloss threshold for base currency: if the total balance for the base currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>cutlossQuote (Optional)</td>
+<td>The cutloss threshold for quote currency: if the total balance for the quote currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note: after putting maker online, if you need to change the following parameters: levels, aveVolume, randomness, spread, density, you will need to first turn the script offline, clear storage, clear orders and restart with the desired parameters.</p>
+<h4>
+<a id="user-content-script-class-stable-strategy" class="anchor" href="#script-class-stable-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Class: Stable Strategy</h4>
+<p>symbol: <code>stable</code></p>
+<p>The <code>stable</code> script class maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base and quote values. You can define the base value and/or the quote value to be a set value, or use the market price that is reported by CoinGecko: an external price reporting platform. Thus, the <code>stable</code> script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.
+Warning: this script may fill orders to match the desired price index and this behavior can be exploited if not set-up carefully (i.e. by inputing cutlossBase and cutlossQuote)</p>
+<p>This script class only uses main account.</p>
+<table>
+<thead>
+<tr>
+<th>Config Parameters</th>
+<th>description</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>market symbol of the base currency</td>
+<td>
+<code>str</code>, e.g. <code>eth</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>market symbol of the quote currency</td>
+<td>
+<code>str</code>, e.g. <code>usdt</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>baseName</td>
+<td>(Optional) Full name of the base currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>quoteName</td>
+<td>(Optional) Full name of the quote currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>baseValue</td>
+<td>The USD value of the base currency</td>
+<td>Pass <code>int</code> or <code>float</code> if you want to define a stable value to it; pass <code>market</code> if you want it to be automatically adjusted to the price reported by the data reporting platforms</td>
+</tr>
+<tr>
+<td>quoteValue</td>
+<td>The USD value of the quote currency</td>
+<td>Pass <code>int</code> or <code>float</code> if you want to define a stable value to it; pass <code>market</code> if you want it to be automatically adjusted to the price reported by the data reporting platforms</td>
+</tr>
+<tr>
+<td>askNum</td>
+<td>Number of ask orders you want to maintain at all times</td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td>bidNum</td>
+<td>Number of bid orders you want to maintain at all times</td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td>aveVolume</td>
+<td>Average order volume in quote currency to be placed on each order</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>randomness</td>
+<td>The degree of randomness you want for the volume of your orders</td>
+<td>
+<code>float</code>, between 0 and 1, 0 being no randomess and 1 being maximum randomness</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>The distance between the first ask order and the first bid order you want to place</td>
+<td>
+<code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+</tr>
+<tr>
+<td>density</td>
+<td>The distance between the orders you place within the same side of the order book</td>
+<td>
+<code>float</code>, percentage, e.g. <code>0.002</code> means 0.2%</td>
+</tr>
+<tr>
+<td>cutlossBase</td>
+<td>(Optional) The cutloss threshold for base currency: if the total balance for the base currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>cutlossQuote</td>
+<td>(Optional) The cutloss threshold for quote currency: if the total balance for the quote currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-script-class-orderbook-replication" class="anchor" href="#script-class-orderbook-replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Class: Orderbook Replication</h4>
+<p>symbol: <code>replication</code></p>
+<p>The orderbook replication strategy replicates the liquidity from an exchange with larger liquidity to an exchange with smaller liquidity, in order to provide liquidity on the smaller exchange. Whenever the orders maintained on the smaller exchange are filled, it will hedge the position by placing market orders and take the liquidity from the larger exchange. This strategy makes profits from strictly hedging the risk.</p>
+<p>This script class uses both a main account and a secondary account. The main account is the account on the exchange on which you want to add liquidity (the one with smaller liquidity), the secondary account is the account on the exchange on which you want to take liquidity (the one with larger liquidity).</p>
+<p>This is a relatively advanced script class, feel free to consult our tech team before implementing it.</p>
+<table>
+<thead>
+<tr>
+<th>Config Parameters</th>
+<th>description</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>market symbol of the base currency</td>
+<td>
+<code>str</code>, e.g. <code>eth</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>market symbol of the quote currency</td>
+<td>
+<code>str</code>, e.g. <code>usdt</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>baseName</td>
+<td>(Optional) Full name of the base currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>quoteName</td>
+<td>(Optional) Full name of the quote currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>divergence</td>
+<td>The price distance between the orders you place on the smaller exchange and the existing orders on the larger exchange. The larger it is, the higher the maintained spread and the lower the maintained order density will be on the smaller exchange. However it has to be large enough to cover the trading fees on both of the exchanges combined and the transaction fee when you send balance from one exchange to the other. Divergence has to be greater than the maximum between (2 x base price unit) and (2 x trading fees + withdrawal fee)</td>
+<td>
+<code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+</tr>
+<tr>
+<td>levels</td>
+<td>Number of orders maintained on each side on the smaller exchange</td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>The percentage of liquidity you want to replicate from the larger exchange to the smaller one</td>
+<td>
+<code>float</code>, percentage, e.g. <code>0.01</code> means 1%. In order to hedge the position effectively, we recommend limiting this parameter to a maximum of 0.2</td>
+</tr>
+<tr>
+<td>volumeCap</td>
+<td>A hard maximum on the each order volume on the smaller exchange, in quote currency</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>randomness</td>
+<td>When the order volume exceeds the <code>volumeCap</code> for a given order, instead of placing an order exactly at the <code>volumeCap</code>, it will place an order around <code>volumeCap</code> with a degree of randomness.</td>
+<td>
+<code>float</code>, between 0 and 1, 0 being no randomess and 1 being maximum randomness</td>
+</tr>
+<tr>
+<td>cutlossBase</td>
+<td>(Optional) The cutloss threshold for base currency: if the total balance of the two accounts combined for the base currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>cutlossQuote</td>
+<td>(Optional) The cutloss threshold for quote currency: if the total balance of the two accounts combined for the quote currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-script-class-enter-strategy" class="anchor" href="#script-class-enter-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Class: Enter Strategy</h4>
+<p>symbol: <code>enter</code></p>
+<p>The <code>enter</code> strategy is designed to purchase a large amount of tokens without influencing the price and suffer a large slippage on the secondary market. The user specifies a certain price threshold and the script will puchase as much as possible at or under that threshold. This strategy can be used to build a price support.</p>
+<p>This script class only uses main account.</p>
+<table>
+<thead>
+<tr>
+<th>Config Parameters</th>
+<th>description</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>market symbol of the base currency</td>
+<td>
+<code>str</code>, e.g. <code>eth</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>market symbol of the quote currency</td>
+<td>
+<code>str</code>, e.g. <code>usdt</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>baseName</td>
+<td>(Optional) Full name of the base currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>quoteName</td>
+<td>(Optional) Full name of the quote currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>maxPrice</td>
+<td>The price threshold: the script will only puchase at a price lower than this threshold</td>
+<td>Put <code>float</code> for price in quote currency, or put <code>str</code> in the format of <code>{price}-{symbol}</code> for price in a specific currency, e.g. <code>0.00000135-btc</code> to set the price to 0.00000135 in BTC</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>The volume threshold: the script will only actively fill an order that has a volume in base currency that is higher than this threshold</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>leftOver</td>
+<td>In order to not impact the price, when the script fills an order, it will always fill part of that order and leave a leftover volume in base currency</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>bidVolume</td>
+<td>When the price is lower than the price threshold, the script will always maintain a bid order on top of the bid side of the orderbook. This parameter specifies the average volume in base currency of the maintained bid order</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>randomness</td>
+<td>The degree of randomness you want for the volume of the maintained bid order</td>
+<td>
+<code>float</code>, between 0 and 1, 0 being no randomess and 1 being maximum randomness</td>
+</tr>
+<tr>
+<td>cutlossBase</td>
+<td>(Optional) The cutloss threshold for base currency: if the total balance for the base currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>cutlossQuote</td>
+<td>(Optional) The cutloss threshold for quote currency: if the total balance for the quote currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-script-class-exit-strategy" class="anchor" href="#script-class-exit-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Class: Exit Strategy</h4>
+<p>symbol: <code>exit</code></p>
+<p>The <code>exit</code> strategy is designed to sell a large amount of tokens without influencing the price and suffer a large slippage on the secondary market. The user specifies a certain price threshold and the script will try to sell as much as possible above that threshold.</p>
+<p>This script class only uses main account.</p>
+<table>
+<thead>
+<tr>
+<th>Config Parameters</th>
+<th>description</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>market symbol of the base currency</td>
+<td>
+<code>str</code>, e.g. <code>eth</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>market symbol of the quote currency</td>
+<td>
+<code>str</code>, e.g. <code>usdt</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>baseName</td>
+<td>(Optional) Full name of the base currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>quoteName</td>
+<td>(Optional) Full name of the quote currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>minPrice</td>
+<td>The price threshold: the script will only sell at a price higher than this threshold</td>
+<td>Put <code>float</code> for price in quote currency, or put <code>str</code> in the format of <code>{price}-{symbol}</code> for price in a specific currency, e.g. <code>0.00000135-btc</code> to set the price to 0.00000135 in BTC</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>The volume threshold: the script will only actively fill an order that has a volume in base currency that is higher than this threshold</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>leftOver</td>
+<td>In order to not impact the price, when the script fills an order, it will always fill part of that order and leave a leftover volume in base currency</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>askVolume</td>
+<td>When the price is higher than the price threshold, the script will always maintain an ask order at the bottom of the sell side of the orderbook. This parameter specifies the average volume of the maintained ask order in base currency</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>randomness</td>
+<td>The degree of randomness you want for the volume of the maintained ask order</td>
+<td>
+<code>float</code>, between 0 and 1, 0 being no randomess and 1 being maximum randomness</td>
+</tr>
+<tr>
+<td>cutlossBase</td>
+<td>(Optional) The cutloss threshold for base currency: if the total balance for the base currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>cutlossQuote</td>
+<td>(Optional) The cutloss threshold for quote currency: if the total balance for the quote currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="user-content-script-class-scheduled-orders" class="anchor" href="#script-class-scheduled-orders" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Class: Scheduled Orders</h4>
+<p>symbol: <code>schedule</code></p>
+<p>You can schedule recursive orders over time, with a given time interval, using the <code>schedule</code> script class. You can use up to two accounts. Every time it places a buy order, it will use the account that has more quote currency, everytime it places a sell order, it will use the account that has less quote currency.</p>
+<p>This script class uses main account; using secondary account is optional.</p>
+<table>
+<thead>
+<tr>
+<th>Config Parameters</th>
+<th>description</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>market symbol of the base currency</td>
+<td>
+<code>str</code>, e.g. <code>eth</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>quote</td>
+<td>market symbol of the quote currency</td>
+<td>
+<code>str</code>, e.g. <code>usdt</code> for the market ETH/USDT</td>
+</tr>
+<tr>
+<td>baseName</td>
+<td>(Optional) Full name of the base currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>quoteName</td>
+<td>(Optional) Full name of the quote currency, specify if multiple currencies listed as the same symbol, case sensitive</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>The number of seconds between each time the order(s) is/are placed</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>buyAmount</td>
+<td>The amount of the buy orders to be placed (Optional)</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>buyPrice</td>
+<td>The price of the buy orders to be placed (Optional)</td>
+<td>pass <code>float</code> if you want place the orders at a set price; pass <code>expression</code> if you want to place the order according to the market conditions</td>
+</tr>
+<tr>
+<td>sellAmount</td>
+<td>The amount of the sell orders to be placed (Optional)</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>sellPrice</td>
+<td>The price of the sel orders to be placed (Optional)</td>
+<td>pass <code>float</code> if you want place the orders at a set price; pass <code>expression</code> if you want to place the order according to the market conditions</td>
+</tr>
+<tr>
+<td>randomness</td>
+<td>The degree of randomness you want for the volume of your orders</td>
+<td>
+<code>float</code>, between 0 and 1, 0 is being no randomess and 1 being maximum randomness</td>
+</tr>
+<tr>
+<td>async</td>
+<td>Whether you want to place orders asynchronously (Optional)</td>
+<td><code>bool</code></td>
+</tr>
+<tr>
+<td>makerOnly</td>
+<td>Whether you want to prevent your order to fill existing orders</td>
+<td><code>bool</code></td>
+</tr>
+<tr>
+<td>cutlossBase</td>
+<td>(Optional) The cutloss threshold for base currency: if the total balance for the base currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td>cutlossQuote</td>
+<td>(Optional) The cutloss threshold for quote currency: if the total balance for the quote currency is lower than the threshold, the script will not run</td>
+<td><code>float</code></td>
+</tr>
+</tbody>
+</table>
+<p>You have to pass at least one pair of: (<code>buyAmount</code>, <code>buyPrice</code>) and/or (<code>sellAmount</code>, <code>sellPrice</code>)</p>
+<h2>
+<a id="user-content-htclient-ui" class="anchor" href="#htclient-ui" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTclient UI</h2>
+<p>HTclient is a desktop app that you can use to manage your accounts and scripts. In this section we will give you instructions regarding each page of the app.</p>
+<h4>
+<a id="user-content-login-page" class="anchor" href="#login-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Login Page</h4>
+<p>After your initial subscription, you will be given a <code>username</code>, <code>password</code> and <code>secretkey</code> that you will use to login to your SaaS system. Please make sure that your <code>password</code> and <code>secretkey</code> are secure. When you launch the app, you will see the login page. If you fill the fields of <code>username</code>, <code>password</code> and <code>secretkey</code>, and hit the <code>Login</code> button, you will be logged in. If you do not want to input your <code>username</code>, <code>password</code> and <code>secretkey</code> every time,  you can alternatively set up the environment variables on your local device. It is strongly advised against doing so on a computer that is shared or not secured. Set the environment variable <code>HTMM_USERNAME</code> to your <code>username</code>, the environment variable <code>HTMM_PASSWORD</code> to your <code>password</code> and the environment variable <code>HTMM_SECRET</code> to your <code>secretkey</code>. After the set-up, every time you login, you will not have to input anything, you can just hit the <code>Envlogin</code> button to login.</p>
+<h4>
+<a id="user-content-main-menu-page" class="anchor" href="#main-menu-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Main Menu Page</h4>
+<p>After you login, you will see the main menu page, from where you can navigate to account search page, script search page, custom script classes page and monitor page.</p>
+<h4>
+<a id="user-content-console" class="anchor" href="#console" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Console</h4>
+<p>Within some pages, you will see a blue console, where you will see the log messages of the app: it prints the change you made to your accounts and scripts and if it runs into an error, it will print the error.</p>
+<h4>
+<a id="user-content-account-page" class="anchor" href="#account-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Page</h4>
+<p>Displayed after you navigate to account page from the main menu page. By default, you will see all of your accounts. If you input a search word or string in the search bar and hit the <code>Search</code> button, you will filter out all accounts whose names do not contain the search word or string. You can click on an account to navigate to that account detail page, you can click on the <code>Add Account</code> button to go to the add account page, or you can click the <code>back</code> button to go back to the main menu.</p>
+<h4>
+<a id="user-content-add-account-page" class="anchor" href="#add-account-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Account Page</h4>
+<p>The add account page is where you register your exchange account on the SaaS infrastructure. You input the account name, exchange and account auth on this page. By default, you can input one key for account auth. If the exchange requires multiple auth keys you can click the <code>Add Auth Key</code> button to add additional key and value input boxes to input more auth keys. Once you input all the information, click confirm to add the account. If it was a success, it will navigate you to the account detail page. To check the name of the keys required for a given exchange, fill in the exchange field and click on <code>Check Auth</code>. The output of the required keys will be shown in the console window.</p>
+<h4>
+<a id="user-content-account-detail-page" class="anchor" href="#account-detail-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Detail Page</h4>
+<p>The account detail page will display all the account information for a selected account. You can also modify your account information and check account balance here. If you want to modify a piece of information, input the new value in the input box on the right of the information that you want to modify and then click the <code>Modify</code> button on the right of the input box. If you want to add additional auth keys, fill the key and value in the New Auth Key field and click <code>Add</code> button. If you want to check balance, input the currency you want to check in the search bar and click the <code>Search</code> button. The balance will be printed on the console. If you want to check balances for multiple currencies, input multiple currencies and use <code>,</code> to seperate them. Click the red <code>Delete</code> button if you want to delete this account.</p>
+<h4>
+<a id="user-content-script-page" class="anchor" href="#script-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Page</h4>
+<p>Displayed after you navigate to script page from the main menu page. By default, you will see all of your scripts. You can input a search word or string in the search bar and hit the search button, you will filter out all scripts whose names do not contain the word or search string. You can click on the script to navigate to the script detail page, you can click on the <code>Add Script</code> button to go to the add script page, or you can click the <code>back</code> button to go back to the main menu.</p>
+<h4>
+<a id="user-content-add-script-page" class="anchor" href="#add-script-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Script Page</h4>
+<p>The add script page is where you add a script. You input the script name, script class, the account(s) the script will be using and the config parameters on this page. By default, you can input one config parameter. If the script class requires multiple parameters you can click the <code>Add Parameter</code> button to add additional parameters input boxes to input more parameters. Once you input all the information, click confirm to add the script. If it was a success, it will navigate you to the script detail page. The newly added script is offline, you can turn it online on the script detail page. The output of the recommended inventory will be shown in the console window.</p>
+<h4>
+<a id="user-content-script-detail-page" class="anchor" href="#script-detail-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Detail Page</h4>
+<p>The script detail page will display all the script information for a selected script. To check the inventory required for the parameters inputed, click on <code>Check Inventory</code> (for the following script classes: <code>maker</code>, <code>stable</code> and <code>replication</code> . You can do so before you turn it online. You can also modify your script information, script monitor and script logs, as well as turning the script online/offline, clearing all related orders and navigate to the account detail page of the account(s) the script is using. If you want to modify a piece of information, input the new value in the input box on the right of the information that you want to modify and then click the <code>Modify</code> button on the right of the input box. If you want to add additional parameters, fill the parameter and value in the New Parameter field and click <code>Add</code> button. Click the <code>Turn Online</code>/<code>Turn Offline</code> button to turn the script online/offline. When a script is online, it runs on our servers even if your HTclient UI is closed. Click the green account button to navigate to the account detail page. Click the red <code>Clear Orders</code> button to cancel all orders placed by this script. Sometimes if you have too many orders and the exchange does not have a cancel all orders endpoint, it might return a <code>timeout</code> error after a 30 seconds delay. If that happens, the cancelling is still in progress, you just need to wait for a couple minutes and click the <code>Clear Orders</code> button again until it returns success. Click the red <code>Delete</code> button if you want to delete this script.</p>
+<h5>
+<a id="user-content-script-monitoring" class="anchor" href="#script-monitoring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Monitoring</h5>
+<p>In the script detail page, there are a <code>Monitor</code> field and a <code>Logs</code> field. The <code>Monitor</code> field displays some metrics of the script, account balances in the format: available/total and if the script needs attention. If the require attention output shows <code>True</code>, it shows that some of the script metrics are different from the config parameters settings. If that happens, check the <code>Logs</code> field to see if there is any error. If there is no error in logs, the script will normally correct itself and maintain the right metrics. If you see errors in logs, you will have to do something according to the error. For example, if the error says insufficient balance, you will have to go to the account detail page, check the balance and refill the account accordingly.
+In case the error returned by the exchange is not clear, i.e. the exchange returns an error followed by a number, please refer to the error section of the API documentation of that exchange for more information on the error encountered. A general error encountered happens when an exchange performs maintenance: in that case the error will have an HTML format (involving characters such as &lt;&gt;), at that time the script is not running and no new order is being placed.</p>
+<h4>
+<a id="user-content-custom-script-classes-page" class="anchor" href="#custom-script-classes-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom Script Classes Page</h4>
+<p>Please refer to the separate documentation for custom script classes.</p>
+<h4>
+<a id="user-content-monitor-page" class="anchor" href="#monitor-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Monitor Page</h4>
+<p>The monitor page displays all the scripts that potentially require attention on a single window, allowing you to monitor at one glance. Please refer to the script monitoring section above for more information about monitoring.</p>
+<h2>
+<a id="user-content-accounts" class="anchor" href="#accounts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accounts</h2>
+<p>To register an account on the SaaS infrastructure, you have to define the following attributes:</p>
+<h4>
+<a id="user-content-account-name" class="anchor" href="#account-name" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Name</h4>
+<p>Account name is the name you give to your exchange account for reference. For example, if you have an account on the exchange Huobi and you want to use this account to run a script on the pair TokenName/ETH, you could name this account: <code>huobi-tokenname-eth</code></p>
+<h4>
+<a id="user-content-account-exchange" class="anchor" href="#account-exchange" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Exchange</h4>
+<p>Account exchange is the exchange your account is on. The exchanges that are currently supported are: <code>binance</code>, <code>huobi</code>, <code>kucoin</code>, <code>okex</code>, <code>bitfinex</code>, <code>bithumb</code>, <code>digifinex</code>, <code>liquid</code>, <code>hitbtc</code>, <code>bittrex</code>, <code>bitrue</code>, <code>cointiger</code>, <code>latoken</code>, <code>lbank</code>, <code>idex</code>, <code>coinall</code>, <code>dragonex</code>, <code>bitforex</code>, <code>bw</code>, <code>bispex</code>, <code>coineal</code>, <code>smartvalor</code>, <code>vitex</code>, <code>stex</code>. If you would like to use HTclient on an exchange that is not currently supported, please send a request via the user contact form on the website, specifying "new exchange integration". For current users, we will integrate new exchanges within 24 hours. We may contact you with additional requirements.</p>
+<h4>
+<a id="user-content-account-authentication" class="anchor" href="#account-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Authentication</h4>
+<p>In order to run the HTClient strategies on your exchange accounts, you need to authenticate your accounts via the parameters that the exchanges use to verify accounts, known as API keys. Different exchanges have different keys. For example for <code>huobi</code>, the two auth keys needed are <code>publickey</code> and <code>secretkey</code>.
+Important: for your own security, please make sure to manage permissions if the exchange offers this feature. You should enable read/write permissions for everything except withdrawal/deposit.</p>
+<h2>
+<a id="user-content-scripts" class="anchor" href="#scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scripts</h2>
+<p>To create a script, you need to define the following attributes:</p>
+<h4>
+<a id="user-content-script-name" class="anchor" href="#script-name" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Name</h4>
+<p>Script name is the name you give to the script you want to run for reference. For example, if you want to run the stable script on the pair TokenName/ETH on Huobi, you could name this script: <code>huobi-stable-tokenname-eth</code></p>
+<h4>
+<a id="user-content-script-class" class="anchor" href="#script-class" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Class</h4>
+<p>Script class is the type of script, each class representing an algorithm (or a strategy). Currently the script classes that are currently publicly supported are: <code>maker</code>, <code>stable</code>, <code>replication</code>, <code>enter</code>, <code>exit</code>, <code>schedule</code>, <code>arbitrage</code>.</p>
+<h4>
+<a id="user-content-script-status" class="anchor" href="#script-status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Script Status</h4>
+<p>The status indicates if the script is online or offline. If it shows offline, it means that the script has been added but is not currently running. If it shows online, it means that the script is currently running (closing the UI does not stop the online script from running, it is running on the cloud server). For each SaaS user, their subscription has a limit to the maximum number of scripts that can be put online at the same time. If you need to run more scripts than your current limit, please upgrade your subscription via the settings page or the website.</p>
+<h4>
+<a id="user-content-main-account-and-secondary-account" class="anchor" href="#main-account-and-secondary-account" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Main Account and Secondary Account</h4>
+<p>Main account and secondary account are the accounts used to run a given script. To attach an account to a script, the account has to be registered on the SaaS infrastructure, it is referenced by the account name you have given. Some script classes run with only one account while others have the option to run with two accounts.</p>
+<h4>
+<a id="user-content-parameters" class="anchor" href="#parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters</h4>
+<p>Parameters define the behavior of a script. Different script classes use different parameters.</p>
+</article></body></html>
