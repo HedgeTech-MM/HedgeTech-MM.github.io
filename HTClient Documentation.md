@@ -2,7 +2,7 @@
 
 ## Introduction
 
-HTClient is the HedgeTech app. It can be operated in order to customize, run and monitor trading algorithms. 
+HTClient is the HedgeTech app. It can be operated in order to customize, run and monitor trading algorithms.
 This documentation helps naviguating through the infrastructure of HTClient and its User Interface (UI). We recommend reading this document while having HTClient opened.
 
 ### Target Audience and Target Markets
