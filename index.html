@@ -771,6 +771,7 @@ pre {
 
 .sidemenu ul ul{
   position: static;
+  transition: 0.1s;
 }
 
 .sidemenu ul ul li{
@@ -1938,8 +1939,8 @@ html {
 
     <li><a href="#introduction">Introduction</a></li>
     <li>
-      <a href="#strategy-catalog">Strategy Catalog</a>
-      <ul>
+      <a href="#strategy-catalog" onclick="toggle_strategy_catalog()">Strategy Catalog</a>
+      <ul id="strategy-catalog-content">
         <li><a href="#maker">Market Making</a></li>
         <li><a href="#stable">Stable Market Making</a></li>
         <li><a href="#replication">Orderbook Replication</a></li>
@@ -1951,8 +1952,8 @@ html {
     <li><a href="#htclient-components">HTClient Components</a></li>
     <li><a href="#htclient-user-interface">HTClient User Interface</a></li>
     <li>
-      <a href="#customized-scripts">Customized Scripts</a>
-      <ul>
+      <a href="#customized-scripts" onclick="toggle_customized_scripts()">Customized Scripts</a>
+      <ul id="customized-scripts-content">
         <li><a href="#components">Components</a></li>
         <li><a href="#predefined-functions-and-objects">Functions and Objects</a></li>
       </ul>
@@ -1973,6 +1974,11 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   document.getElementById("sidemenu").style.display = "block"
 }
 
+document.getElementById("strategy-catalog-content").style.height = "0"
+document.getElementById("strategy-catalog-content").style.display = "none"
+document.getElementById("customized-scripts-content").style.height = "0"
+document.getElementById("customized-scripts-content").style.display = "none"
+
 function toggle() {
   if (document.getElementById("mainbody").style.marginLeft == "0px") {
     document.getElementById("mainbody").style.marginLeft = "300px"
@@ -1983,6 +1989,20 @@ function toggle() {
     document.getElementById("sidemenu").style.width = "0"
     document.getElementById("sidemenu").style.display = "none"
   }
+}
+
+function toggle_strategy_catalog() {
+  document.getElementById("strategy-catalog-content").style.height = "180px"
+  document.getElementById("strategy-catalog-content").style.display = "block"
+  document.getElementById("customized-scripts-content").style.height = "0"
+  document.getElementById("customized-scripts-content").style.display = "none"
+}
+
+function toggle_customized_scripts() {
+  document.getElementById("customized-scripts-content").style.height = "60px"
+  document.getElementById("customized-scripts-content").style.display = "block"
+  document.getElementById("strategy-catalog-content").style.height = "0"
+  document.getElementById("strategy-catalog-content").style.display = "none"
 }
 
 </script>
