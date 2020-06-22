@@ -723,8 +723,7 @@ pre {
 }
 
 .mainbody {
-  width: 100%;
-  min-width: 500px;
+  margin-left: 300px;
   color:#333;
   background:#fff;
   transition: 0.1s;
@@ -800,7 +799,7 @@ html {
 
 <div id="mainbody" class="mainbody">
 
-  <div class="top">
+  <div id="top" class="top">
     <span><a onclick="toggle()">
       <i class="fas fa-bars"></i>
     </a></span>
@@ -1968,10 +1967,12 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   document.getElementById("mainbody").style.marginLeft = "0"
   document.getElementById("sidemenu").style.width = "0"
   document.getElementById("sidemenu").style.display = "none"
+  document.getElementById("mainbody").style.width = "100%"
 } else {
   document.getElementById("mainbody").style.marginLeft = "300px"
   document.getElementById("sidemenu").style.width = "300px"
   document.getElementById("sidemenu").style.display = "block"
+  document.getElementById("top").style.display = "none"
 }
 
 document.getElementById("strategy-catalog-content").style.height = "0"
