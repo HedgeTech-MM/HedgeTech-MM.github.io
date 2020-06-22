@@ -8,7 +8,8 @@
 }
 
 body {
-    width: 98%;
+    width: 100%;
+    margin-top: 0;
     margin-right: auto;
     margin-left: 0;
     color:#333;
@@ -724,6 +725,16 @@ pre {
   border-color: #4078c0;
 }
 
+.top {
+  position: fixed;
+}
+
+.top a{
+  color: #000;
+  font-size: 30px;
+  padding-left: 5px;
+}
+
 .sidemenu {
   height: 100%;
   position: fixed;
@@ -778,10 +789,12 @@ html {
     border: none;
   }
 }
-</style>
+</style></head>
 
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-<div id="sideMenu" class="sidemenu">
+<div id="sidemenu" class="sidemenu">
+
   <ul>
 
     <li><a href="#introduction">Introduction</a></li>
@@ -810,7 +823,13 @@ html {
 
 <div id="mainbody">
 
-  <title>HTClient Documentation</title></head><body><article class="markdown-body"><h1>
+  <div class="top">
+    <span><a onclick="toggle()">
+      <i class="fas fa-bars"></i>
+    </a></span>
+  </div>
+
+  <title>HTClient Documentation</title><body><article class="markdown-body"><h1>
   <a id="user-content-htclient-documentation" class="anchor" href="#htclient-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient Documentation</h1>
   <h2>
   <a id="user-content-introduction" class="anchor" name="introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
@@ -1936,12 +1955,26 @@ html {
   <p>It returns <code>{'success': True}</code> if all orders are cancelled successfully; it raises an <code>Exception</code> with the exchange error message if one or more order(s) did not get cancelled.</p>
   </article></body>
 </div>
-
 <script>
 
 
-document.getElementById("mainbody").style.marginLeft = "300px"
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  document.getElementById("mainbody").style.marginLeft = "0"
+  document.getElementById("sidemenu").style.width = "0"
+} else {
+  document.getElementById("mainbody").style.marginLeft = "300px"
+  document.getElementById("sidemenu").style.width = "300px"
+}
+
+function toggle() {
+  if (document.getElementById("mainbody").style.marginLeft == "0px") {
+    document.getElementById("mainbody").style.marginLeft = "300px"
+    document.getElementById("sidemenu").style.width = "300px"
+  } else {
+    document.getElementById("mainbody").style.marginLeft = "0"
+    document.getElementById("sidemenu").style.width = "0"
+  }
+}
 
 </script>
-
 </html>
