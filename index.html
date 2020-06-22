@@ -820,14 +820,11 @@ html {
   <h2>
   <a id="user-content-introduction" class="anchor" name="introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
   <p>HTClient is the HedgeTech app. It can be operated in order to customize, run and monitor trading algorithms.
-  This documentation helps naviguating through the infrastructure of HTClient and its User Interface (UI). We recommend reading this document while having HTClient opened.</p>
+  <br>This documentation helps naviguating through the infrastructure of HTClient and its User Interface (UI). We recommend reading this document while having HTClient opened.</p>
   <h3>
   <a id="user-content-target-audience-and-target-markets" class="anchor" name="target-audience-and-target-markets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Target Audience and Target Markets</h3>
-  <p>HTClient is particularly suitable for token issuers, exchanges, market makers and broker/dealers.
-  Token issuers can operate the systems within their company, on all exchanges they are listed on.
-  Exchanges can operate the systems in-house for their main pairs as well as all other altcoins listed on their platform.
-  Market makers can chose to either use the algorithms designed by HedgeTech or to design their own custom scripts, benefiting from our integration capabilities and server infrastructure.
-  Broker/dealers can add to the services they offer with an all-in-one liquidity provision system.</p>
+  <p>HTClient is particularly suitable for token issuers, exchanges, market makers and broker/dealers.</p>
+  <p>Token issuers can operate the systems within their company, on all exchanges they are listed on.<br>Exchanges can operate the systems in-house for their main pairs as well as all other altcoins listed on their platform.<br>Market makers can chose to either use the algorithms designed by HedgeTech or to design their own custom scripts, benefiting from our integration capabilities and server infrastructure.<br>Broker/dealers can add to the services they offer with an all-in-one liquidity provision system.</p>
   <p>The scripts are suitable for any market environment: major coins, altcoins, security tokens, perpetual contracts and all other digital assets.</p>
   <h3>
   <a id="user-content-installation" class="anchor" name="installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
@@ -874,9 +871,7 @@ html {
   <h3>
   <a id="user-content-market-making" class="anchor" name="maker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Market Making</h3>
   <p>Script class symbol: <code>maker</code></p>
-  <p>Purpose: The <code>maker</code> script class provides liquidity to the market, it narrows the market spread and it makes profits from the spread when the price fluctuates.
-  Details: It maintains a number of orders on both the buy and sell sides for a currency pair. It lets the price behave according to supply and demand in the market, it adjusts the maintained orders automatically: when people sell, the price will move down; when people buy, the price will move up.
-  Use cases: provide liquidity on any market and offer a competitive spread in price to achieve an efficient market environment where traders can enter and exit at fair prices.</p>
+  <p>Purpose: The <code>maker</code> script class provides liquidity to the market, it narrows the market spread and it makes profits from the spread when the price fluctuates.<br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair. It lets the price behave according to supply and demand in the market, it adjusts the maintained orders automatically: when people sell, the price will move down; when people buy, the price will move up.<br>Use cases: provide liquidity on any market and offer a competitive spread in price to achieve an efficient market environment where traders can enter and exit at fair prices.</p>
   <p>Account(s): main account only.</p>
   <table>
   <thead>
@@ -953,10 +948,7 @@ html {
   <h3>
   <a id="user-content-stable-market-making-or-market-making-with-price-matching" class="anchor" name="stable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stable Market Making (or Market Making with Price Matching)</h3>
   <p>Script class symbol: <code>stable</code></p>
-  <p>Purpose: The <code>stable</code> script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.
-  Details: It maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base value and/or quote value. You can define the base value and the quote value to be set values, or use the market price that is reported by CoinGecko.
-  Warning: It can place taker orders to match the price to the index value. As a result, there are situations in which external orders can be actively filled. Please reach out if more information is necessary.
-  Use cases: provide liquidity and narrow spread on stablecoin markets that are pegged to a specific value, major pairs on small exchanges that want to reduce adverse arbitrage opportunities, pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.</p>
+  <p>Purpose: The <code>stable</code> script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.<br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base value and/or quote value. You can define the base value and the quote value to be set values, or use the market price that is reported by CoinGecko.<br>Warning: It can place taker orders to match the price to the index value. As a result, there are situations in which external orders can be actively filled. Please reach out if more information is necessary.<br>Use cases: provide liquidity and narrow spread on stablecoin markets that are pegged to a specific value, major pairs on small exchanges that want to reduce adverse arbitrage opportunities, pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.</p>
   <p>Account(s): main account only.</p>
   <table>
   <thead>
@@ -1047,10 +1039,7 @@ html {
   <h3>
   <a id="user-content-orderbook-replication" class="anchor" name="replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Orderbook Replication</h3>
   <p>Script class symbol: <code>replication</code></p>
-  <p>Purpose: The orderbook <code>replication</code> strategy replicates the liquidity from an exchange with more liquidity to an exchange with less liquidity, in order to provide liquidity on the exchange with less liquidity. This strategy makes profits from strictly hedging the risk.
-  Details: Whenever the orders maintained on the exchange with less liquidity are filled, it will hedge the position by placing market orders and take the liquidity from the  exchange with more liquidity.
-  Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.
-  Use cases: provide liquidity and narrow spread on major pairs on exchanges with little liquidity, pairs with little liquidity for a given token.</p>
+  <p>Purpose: The orderbook <code>replication</code> strategy replicates the liquidity from an exchange with more liquidity to an exchange with less liquidity, in order to provide liquidity on the exchange with less liquidity. This strategy makes profits from strictly hedging the risk.<br>Details: Whenever the orders maintained on the exchange with less liquidity are filled, it will hedge the position by placing market orders and take the liquidity from the  exchange with more liquidity.<br>Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.<br>Use cases: provide liquidity and narrow spread on major pairs on exchanges with little liquidity, pairs with little liquidity for a given token.</p>
   <p>Account(s): both main account and secondary account. Main account is the account on the exchange on which liquidity will be added (the one with less liquidity), secondary account is the account on the exchange on which liquidity will be taken from (the one with more liquidity).</p>
   <table>
   <thead>
@@ -1126,9 +1115,7 @@ html {
   <h3>
   <a id="user-content-market-entry-or-buy-back-or-accumulate" class="anchor" name="enter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Market Entry (or Buy-Back, or Accumulate)</h3>
   <p>Script class symbol: <code>enter</code></p>
-  <p>Purpose: The <code>enter</code> strategy is designed to efficiently purchase a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.
-  Details: The user specifies a certain price threshold and the script will purchase as much as possible at or under that threshold.
-  Use cases: efficiently accumulate tokens at the lowest price possible, build a price support (that can be moved up gradually).</p>
+  <p>Purpose: The <code>enter</code> strategy is designed to efficiently purchase a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.<br>Details: The user specifies a certain price threshold and the script will purchase as much as possible at or under that threshold.<br>Use cases: efficiently accumulate tokens at the lowest price possible, build a price support (that can be moved up gradually).</p>
   <p>Account(s): main account only.</p>
   <table>
   <thead>
@@ -1203,9 +1190,7 @@ html {
   <h3>
   <a id="user-content-market-exit-or-sell-off-or-liquidate" class="anchor" name="exit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Market Exit (or Sell-Off, or Liquidate)</h3>
   <p>Script class symbol: <code>exit</code></p>
-  <p>Purpose: The <code>exit</code> strategy is designed to efficiently sell a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.
-  Details: The user specifies a certain price threshold and the script will sell as much as possible at or above that threshold.
-  Use cases: efficiently liquidate tokens at the highest price possible.</p>
+  <p>Purpose: The <code>exit</code> strategy is designed to efficiently sell a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.<br>Details: The user specifies a certain price threshold and the script will sell as much as possible at or above that threshold.<br>Use cases: efficiently liquidate tokens at the highest price possible.</p>
   <p>Account(s): main account only.</p>
   <table>
   <thead>
@@ -1280,9 +1265,7 @@ html {
   <h3>
   <a id="user-content-scheduled-orders" class="anchor" name="schedule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scheduled Orders</h3>
   <p>Script class symbol: <code>schedule</code></p>
-  <p>Purpose: <code>schedule</code> recursive orders over time, spaced out by a given time interval.
-  Details: Every time it places a buy order, it will use the account that has more quote currency; everytime it places a sell order, it will use the account that has less quote currency.
-  Use cases: customize a trading strategy without any coding background.</p>
+  <p>Purpose: <code>schedule</code> recursive orders over time, spaced out by a given time interval.<br>Details: Every time it places a buy order, it will use the account that has more quote currency; everytime it places a sell order, it will use the account that has less quote currency.<br>Use cases: customize a trading strategy without any coding background.</p>
   <p>Account(s): main account, secondary account is optional.</p>
   <table>
   <thead>
@@ -1376,16 +1359,16 @@ html {
   <h3>
   <a id="user-content-accounts" class="anchor" name="accounts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accounts</h3>
   <p>Accounts are the exchanges accounts.
-  An account is defined by: the exchange it is on and its API keys.</p>
+  <br>An account is defined by: the exchange it is on and its API keys.</p>
   <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.okex.com/" rel="nofollow">okex</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://www.bithumb.pro/" rel="nofollow">bithumb</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>.</p>
   <h3>
   <a id="user-content-scripts" class="anchor" name="scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scripts</h3>
   <p>Scripts are the algorithms that run on our servers.
-  A script is defined by: script class, parameters and account(s) it uses.</p>
+  <br>A script is defined by: script class, parameters and account(s) it uses.</p>
   <h3>
   <a id="user-content-classes" class="anchor" name="classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h3>
-  <p>A script class is the strategy that a script uses. There are public script classes that are available for all users, and there are also customized script classes that are defined by each individual user.
-  The public script classes are: <a href="/C:/Users/tomsq/OneDrive/Desktop/HedgeTech-MM.github.io/%22#maker%22">maker</a>, <a href="/C:/Users/tomsq/OneDrive/Desktop/HedgeTech-MM.github.io/%22#stable%22">stable</a>, <a href="/C:/Users/tomsq/OneDrive/Desktop/HedgeTech-MM.github.io/%22#replication%22">replication</a>, <a href="/C:/Users/tomsq/OneDrive/Desktop/HedgeTech-MM.github.io/%22#enter%22">enter</a>, <a href="/C:/Users/tomsq/OneDrive/Desktop/HedgeTech-MM.github.io/%22#exit%22">exit</a> and <a href="/C:/Users/tomsq/OneDrive/Desktop/HedgeTech-MM.github.io/%22#schedule%22">schedule</a>.</p>
+  <p>A script class is the strategy that a script uses. There are public script classes that are available for all users, and there are also customized script classes that are defined by each individual user.</p>
+  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a> and <a href="#schedule">schedule</a>.</p>
   <h2>
   <a id="user-content-htclient-user-interface" class="anchor" name="htclient-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient User Interface</h2>
   <h3>
@@ -1401,15 +1384,15 @@ html {
   <a id="user-content-monitor-page" class="anchor" name="monitor-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Monitor Page</h3>
   <p>The monitor page displays all the scripts that may require attention on one screen.</p>
   <p>In each script monitor, <code>Monitor Metrics</code> is displayed on the left and <code>Server Logs</code> is displayed on the right.
-  The <code>Monitor Metrics</code> field displays some metrics of the script, account balances in the format: available/total. If the script monitor of a script is displayed on the monitor page, it shows that some of the script metrics are different from the config parameters settings. If that happens, check the <code>Server Logs</code> field to see if there is any error.</p>
+  <br>The <code>Monitor Metrics</code> field displays some metrics of the script, account balances in the format: available/total. If the script monitor of a script is displayed on the monitor page, it shows that some of the script metrics are different from the config parameters settings. If that happens, check the <code>Server Logs</code> field to see if there is any error.</p>
   <p>If there is no error in logs, the script will normally correct itself and maintain the right metrics.
-  If there are errors in logs, some action will have to be taken according to the error. For example, if the error says insufficient balance, you will have to refill the account accordingly.
-  In case the error returned by the exchange is not clear, i.e. the exchange returns an error followed by a number, please refer to the error section of the API documentation of that exchange for more information on the error encountered. A general error encountered happens when an exchange performs maintenance: in that case the error will have an HTML format (involving characters such as &lt;&gt;), at that time the script is not running and no new order is being placed.</p>
+  <br>If there are errors in logs, some action will have to be taken according to the error. For example, if the error says insufficient balance, you will have to refill the account accordingly.
+  <br>In case the error returned by the exchange is not clear, i.e. the exchange returns an error followed by a number, please refer to the error section of the API documentation of that exchange for more information on the error encountered. A general error encountered happens when an exchange performs maintenance: in that case the error will have an HTML format (involving characters such as &lt;&gt;), at that time the script is not running and no new order is being placed.</p>
   <h3>
   <a id="user-content-search-bars" class="anchor" name="search-bars" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Search Bars</h3>
   <p>Several terms separated by commas can be entered when searching. Spaces are ignored.
-  If all these terms are contained in an account name or script name, the appropriate results will be shown; otherwise nothing will be displayed.
-  When using the search bar within the monitor page, the results will be displayed among the items present on the last update of the monitor. Searching something will not update the monitor.</p>
+  <br>If all these terms are contained in an account name or script name, the appropriate results will be shown; otherwise nothing will be displayed.
+  <br>When using the search bar within the monitor page, the results will be displayed among the items present on the last update of the monitor. Searching something will not update the monitor.</p>
   <h2>
   <a id="user-content-customized-scripts" class="anchor" name="customized-scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Customized Scripts</h2>
   <p>Coding background is required passed this point.</p>
