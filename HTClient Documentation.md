@@ -111,8 +111,8 @@ Account(s): main account only.
 |------------|-------------|------|
 | base | Market symbol of the base currency | `str`, e.g. `eth` for the market ETH/USDT|
 | quote | Market symbol of the quote currency | `str`, e.g. `usdt` for the market ETH/USDT|
-| baseValue | The USD value of the base currency | Pass `int` or `float` to define a stable value; pass `market` for the value to be automatically adjusted to the price reported by CoinGecko |
-| quoteValue | The USD value of the quote currency | Pass `int` or `float` to define a stable value; pass `market` for the value to be automatically adjusted to the price reported by CoinGecko |
+| baseValue | The USD value of the base currency | Pass `int` or `float` to define a stable value; pass `market` for the value to be automatically adjusted to the price reported by CoinGecko, or pass an [api expression]("#create-an-api-expression") to resolve a value from a third party api. |
+| quoteValue | The USD value of the quote currency | Pass `int` or `float` to define a stable value; pass `market` for the value to be automatically adjusted to the price reported by CoinGecko, or pass an [api expression]("#create-an-api-expression") to resolve a value from a third party api. |
 | askNum | Number of ask orders to be maintained | `int` |
 | bidNum | Number of bid orders to be maintained | `int` |
 | density | The distance between orders placed within the same side of the order book | `float`, percentage, e.g. `0.002` means 0.2% |
@@ -123,6 +123,44 @@ Account(s): main account only.
 | quoteName (Optional) | Full name of the quote currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive | `str` |
 | cutlossBase (Optional) | The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause | `float` |
 | cutlossQuote (Optional) | The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause | `float` |
+
+#### Create an API Expression
+
+API expression is used to assign the `baseValue` and `quoteValue` to a third party API. Only [REST API](https://restfulapi.net/) with a `json` response body are allowed.
+
+To create an API expression, the first step is to construct a `json` object that has the following attributes:
+
+| Key | Description | Type |
+|-----|-------------|------|
+| url | The full url of this API. (Including the query string) | `str` |
+| method | The API request method | `str`, available values: "get", "post", "delete", "put" |
+| keyChain | A list of keys that resolves the raw response into a single value. See [this example]("#keychain-example") | `array` |
+| headers (Optional) | The headers of the API request constructed in `json` format if any | `json` |
+| data (Optional) | The request body of the API if any | `str` |
+
+Once the `json` object is constructed, convert it to `str` and encode it with `base64`.
+
+Finally, add `REST-` in the beginning of the `base64` encoded string. The API expression should look something like this: `REST-eyJ1cmwiOiAiaHR0cHM6Ly9hcGkuYmluYW5jZS5jb20vYXBpL3YzL3RpY2tlci8yNGhyP3N5bWJvbD1CTkJCVEMiLCAibWV0aG9kIjogImdldCIsICJrZXlDaGFpbiI6IFsibGFzdFByaWNlIl19`
+
+#### Keychain Example
+
+Assuming the raw response of the API is as follows:
+
+``` json
+{
+	"key1": {
+		"key11": 6,
+		"key12": [
+			1,
+			3,
+			7
+		]
+	},
+	"key2": 10
+}
+```
+
+The `keyChain` should be an `array` of keys that leads to the value to be resolved. If the value to be resolved is `3`, the `keyChain` should be `["key1", "key12", 1]`. If the value to be resolved is `10`, the `keyChain` should be `["key2"]`. Note that the index of an `array` starts from `0`.
 
 ### Orderbook Replication
 

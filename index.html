@@ -979,12 +979,12 @@ html {
   <tr>
   <td>baseValue</td>
   <td>The USD value of the base currency</td>
-  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko</td>
+  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko; pass an <a href="#create-an-api-expression">api expression</a> to automatically read a value from a third party api.</td>
   </tr>
   <tr>
   <td>quoteValue</td>
   <td>The USD value of the quote currency</td>
-  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko</td>
+  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko; pass an <a href="#create-an-api-expression">api expression</a> to automatically read a value from a third party api.</td>
   </tr>
   <tr>
   <td>askNum</td>
@@ -1041,6 +1041,67 @@ html {
   </tr>
   </tbody>
   </table>
+
+  <h4>
+  <a id="user-content-create-an-api-expression" class="anchor" name="create-an-api-expression" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create an API Expression</h4>
+  <p>An API expression is used to assign the <code>baseValue</code> and/or <code>quoteValue</code> to a value automatically read from a third party API. Only <a href="https://restfulapi.net/" rel="nofollow">REST APIs</a> with a <code>json</code> response body are allowed.</p>
+  <p>To create an API expression, the first step is to construct a <code>json</code> object that has the following attributes:</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Key</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>url</td>
+  <td>The full url of the API from which the value will be read (including the query string)</td>
+  <td><code>str</code></td>
+  </tr>
+  <tr>
+  <td>method</td>
+  <td>The API request method</td>
+  <td>
+  <code>str</code>, available values: "get", "post", "delete", "put"</td>
+  </tr>
+  <tr>
+  <td>keyChain</td>
+  <td>A list of keys that resolve the raw response into a single value. See <a href="#keychain-example">this example</a>
+  </td>
+  <td><code>array</code></td>
+  </tr>
+  <tr>
+  <td>headers (Optional)</td>
+  <td>The headers of the API request constructed in <code>json</code> format if any</td>
+  <td><code>json</code></td>
+  </tr>
+  <tr>
+  <td>data (Optional)</td>
+  <td>The request body of the API if any</td>
+  <td><code>str</code></td>
+  </tr>
+  </tbody>
+  </table>
+  <p>Once the <code>json</code> object is constructed, convert it to <code>str</code> and encode it with <code>base64</code>.</p>
+  <p>Finally, add <code>REST-</code> at the beginning of the <code>base64</code> encoded string. The API expression should look like this: <code>REST-eyJ1cmwiOiAiaHR0cHM6Ly9hcGkuYmluYW5jZS5jb20vYXBpL3YzL3RpY2tlci8yNGhyP3N5bWJvbD1CTkJCVEMiLCAibWV0aG9kIjogImdldCIsICJrZXlDaGFpbiI6IFsibGFzdFByaWNlIl19</code></p>
+  <h4>
+  <a id="user-content-keychain-example" class="anchor" name="keychain-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Keychain Example</h4>
+  <p>Assuming the raw response of the API is as follows:</p>
+  <div class="highlight highlight-source-json"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>key1<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>key11<span class="pl-pds">"</span></span>: <span class="pl-c1">6</span>,
+      <span class="pl-s"><span class="pl-pds">"</span>key12<span class="pl-pds">"</span></span>: [
+        <span class="pl-c1">1</span>,
+        <span class="pl-c1">3</span>,
+        <span class="pl-c1">7</span>
+      ]
+    },
+    <span class="pl-s"><span class="pl-pds">"</span>key2<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>
+  }</pre></div>
+  <p>The <code>keyChain</code> should be an <code>array</code> of keys that leads to the value to be resolved. If the value to be resolved is <code>3</code>, the <code>keyChain</code> should be <code>["key1", "key12", 1]</code> (note that the index of an <code>array</code> starts from <code>0</code>). If the value to be resolved is <code>10</code>, the <code>keyChain</code> should be <code>["key2"]</code>.</p>
+
   <h3>
   <a id="user-content-orderbook-replication" class="anchor" name="replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Orderbook Replication</h3>
   <p>Script class symbol: <code>replication</code></p>
