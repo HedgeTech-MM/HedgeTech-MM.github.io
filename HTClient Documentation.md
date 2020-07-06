@@ -348,6 +348,32 @@ Note: if the account type `main` is defined, the exchange logo of that account w
 
 Code block is the code that defines what the script will do within each iteration. It follows [python3.6](https://www.python.org) runtime, and it supports the following libraries: [requests](https://pypi.org/project/requests/), [websocket_client](https://pypi.org/project/websocket_client/), [numpy](https://pypi.org/project/numpy/), [scipy](https://pypi.org/project/scipy/), [pandas](https://pypi.org/project/pandas/) and [Crypto](https://pypi.org/project/pycryptodome/). In addition [predefined functions and objects]("#predefined-functions-and-objects") can be used, and it is possible to interact with the server storage, server logs and the exchanges APIs.
 
+Any `Exception` raised will be output to the server logs, you can use "View Logs" in the script page to debug your code.
+
+In code block, all variables you defined will not be considered as global. In the functions or classes, if you want to refer a name in a that is defined previously, you have to pass them in the argument. Otherwise it will raise a `nameError`. Here is an example:
+
+``` python
+message = 'hello world'
+
+def output():
+	log(message)
+
+output()
+
+```
+
+The above code will raise a `nameError`: name "message" is not defined. Instead, you should use the following code:
+
+``` python
+message = 'hellow world'
+
+def output(message):
+	log(message)
+
+output(message)
+
+```
+
 #### Monitor Metrics
 
 Monitor metrics determine what will be displayed within the script monitor on the script page and monitor page. As many monitor metrics as needed can be defined. Each monitor metric has the following three attributes:

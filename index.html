@@ -1522,8 +1522,23 @@ html {
   <h4>
   <a id="user-content-code-block" class="anchor" href="#code-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code Block</h4>
   <p>Code block is the code that defines what the script will do within each iteration. It follows <a href="https://www.python.org" rel="nofollow">python3.6</a> runtime, and it supports the following libraries: <a href="https://pypi.org/project/requests/" rel="nofollow">requests</a>, <a href="https://pypi.org/project/websocket_client/" rel="nofollow">websocket_client</a>, <a href="https://pypi.org/project/numpy/" rel="nofollow">numpy</a>, <a href="https://pypi.org/project/scipy/" rel="nofollow">scipy</a>, <a href="https://pypi.org/project/pandas/" rel="nofollow">pandas</a> and <a href="https://pypi.org/project/pycryptodome/" rel="nofollow">Crypto</a>. In addition <a href="#predefined-functions-and-objects">predefined functions and objects</a> can be used, and it is possible to interact with the server storage, server logs and the exchanges APIs.</p>
-  <h4>
-  <a id="user-content-monitor-metrics" class="anchor" href="#monitor-metrics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Monitor Metrics</h4>
+  <p>Any <code>Exception</code> raised will be output to the server logs, you can use "View Logs" in the script page to debug your code.</p>
+  <p>In code block, all variables you defined will not be considered as global. In the functions or classes, if you want to refer a name in a that is defined previously, you have to pass them in the argument. Otherwise it will raise a <code>nameError</code>. Here is an example:</p>
+  <div class="highlight highlight-source-python"><pre><span class="pl-s1">message</span> <span class="pl-c1">=</span> <span class="pl-s">'hello world'</span>
+
+<span class="pl-k">def</span> <span class="pl-en">output</span>():
+  <span class="pl-en">log</span>(<span class="pl-s1">message</span>)
+
+<span class="pl-en">output</span>()</pre></div>
+<p>The above code will raise a <code>nameError</code>: name "message" is not defined. Instead, you should use the following code:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-s1">message</span> <span class="pl-c1">=</span> <span class="pl-s">'hellow world'</span>
+
+<span class="pl-k">def</span> <span class="pl-en">output</span>(<span class="pl-s1">message</span>):
+  <span class="pl-en">log</span>(<span class="pl-s1">message</span>)
+
+<span class="pl-en">output</span>(<span class="pl-s1">message</span>)</pre></div>
+<h4>
+<a id="user-content-monitor-metrics" class="anchor" href="#monitor-metrics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Monitor Metrics</h4>
   <p>Monitor metrics determine what will be displayed within the script monitor on the script page and monitor page. As many monitor metrics as needed can be defined. Each monitor metric has the following three attributes:</p>
   <table>
   <thead>
