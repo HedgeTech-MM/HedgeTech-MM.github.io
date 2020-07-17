@@ -953,7 +953,7 @@ html {
   <h3>
   <a id="user-content-stable-market-making-or-market-making-with-price-matching" class="anchor" name="stable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stable Market Making (or Market Making with Price Matching)</h3>
   <p>Script class symbol: <code>stable</code></p>
-  <p>Purpose: The <code>stable</code> script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.<br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base value and/or quote value. You can define the base value and the quote value to be set values, or use the market price that is reported by CoinGecko.<br>Warning: It can place taker orders to match the price to the index value. As a result, there are situations in which external orders can be actively filled. Please reach out if more information is necessary.<br>Use cases: provide liquidity and narrow spread on stablecoin markets that are pegged to a specific value, major pairs on small exchanges that want to reduce adverse arbitrage opportunities, pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.</p>
+  <p>Purpose: The <code>stable</code> script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.<br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base value and/or quote value. You can define the base value and the quote value to be set values, or use the market price that is reported by CoinGecko.<br>Warning: It can place taker orders to match the price to the index value. As a result, there are situations in which external orders can be actively filled. Please reach out if more information is necessary.<br>Use cases: provide liquidity and narrow spread on stablecoin markets or tokens that are pegged to a specific value.</p>
   <p>Account(s): main account only.</p>
   <table>
   <thead>
@@ -1175,6 +1175,68 @@ html {
   <td>cutlossQuote (Optional)</td>
   <td>The cutloss threshold for quote currency: if the total quote currency balance for the two accounts combined is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
+  </tr>
+  </tbody>
+  </table>
+  <h3>
+  <a id="user-content-arbitrage" class="anchor" name="arbitrage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arbitrage</h3>
+  <p>Script class symbol: <code>arbitrage</code></p>
+  <p>Purpose: For a given base currency, the <code>arbitrage</code> strategy can do same exchange cross pair arbitrage, cross exchange same pair arbitrage and cross exchange cross pair arbitrage.
+  <br>Details: The script will look for all arbitrage opportunities for a given base currency. If only a main account is specified, the script will only look for cross pair arbitrage opportunities on the exchange of the account. However, if both a main and a secondary accounts are specified, the script will look for all combinations of arbitrage opportunities (i.e. cross pairs on the main account exchange, cross pairs on the secondary account exchange, same pair and cross pairs accross both exchanges). Arbitrage opportunities are defined by the threshold parameter.
+  <br>Warning: for cross exchange arbitrage (whether same pair or cross pair), rebalance will be needed at times between main and secondary accounts. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below).
+  <br>Use cases: Generate profits from price discrepancies between pairs for a given currency. Works very well in combination with <code>maker</code> to effectively reduce price discrepancies between pairs for a given currency, especially major pairs on small exchanges that want to reduce adverse arbitrage opportunities and pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.</p>
+  <p>Account(s): main account only for same exchange cross pair arbitrage; main account and secondary account for both same exchange and cross exchange arbitrage (whether same pair or cross pair).</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Parameters</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>base</td>
+  <td>Market symbol of the base currency</td>
+  <td>
+  <code>str</code>, e.g. <code>eth</code> for the market ETH/USDT</td>
+  </tr>
+  <tr>
+  <td>quoteListMain</td>
+  <td>All quote currencies for the pairs listed on the exchange of the main account. Seperated by comma, spaces will be ignored.</td>
+  <td>
+  <code>str</code>, e.g. <code>eth, btc, usdt</code> for arbitrage across the pairs base/eth, base/btc and base/usdt</td>
+  </tr>
+  <tr>
+  <td>threshold</td>
+  <td>The minimum price difference for arbitrage in order to make profits. The threshold has to cover the trading fees - for arbitrage across the same pair (on different exchanges): the trading fee will be twice the taker fees; for cross pair arbitrage (either on the same exchange or on different exchanges), the trading fee will be three times the taker fees - and withdrawal fees combined</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>quoteListSecondary (Optional)</td>
+  <td>All quote currencies for the pairs listed on the exchange of the secondary account. Seperated by comma, spaces will be ignored.</td>
+  <td>
+  <code>str</code>, e.g. <code>eth, btc, usdt</code> for arbitrage across the pairs base/eth, base/btc and base/usdt</td>
+  </tr>
+  <tr>
+  <td>quoteOrder (Optional)</td>
+  <td>The order in which the quote currencies are quoted against each other for cross pair arbitrage (whether same exchange or different exchanges). Seperated by comma, spaces will be ignored.</td>
+  <td>
+  <code>str</code>, e.g. For arbitrage pairs base/eth, base/btc, base/usdt, since eth is quoted against btc and usdt (eth/btc, eth/usdt), and since btc is quoted against usdt only (btc/usdt), then the <code>quoteOrder</code> should be <code>eth, btc, usdt</code>
+  </td>
+  </tr>
+  <tr>
+  <td>cutlossMain (Optional)</td>
+  <td>The cutloss condition(s) for the main account. Use column to seperate the currency symbol and the cutloss threshold; use comma to seperate cutloss conditions for different currencies. Spaces will be ignored</td>
+  <td>
+  <code>str</code>, e.g. <code>btc: 1, eth: 30</code> for cutloss conditions to be 1 BTC and 30 ETH</td>
+  </tr>
+  <tr>
+  <td>cutlossSecondary (Optional)</td>
+  <td>The cutloss condition(s) for the secondary account.  Use column to seperate the currency symbol and the cutloss threshold; use comma to seperate cutloss conditions for different currencies. Spaces will be ignored</td>
+  <td>
+  <code>str</code>, e.g. <code>btc: 1, eth: 30</code> for cutloss conditions to be 1 BTC and 30 ETH</td>
   </tr>
   </tbody>
   </table>
@@ -2027,6 +2089,7 @@ html {
         <li><a href="#maker">Market Making</a></li>
         <li><a href="#stable">Stable Market Making</a></li>
         <li><a href="#replication">Orderbook Replication</a></li>
+        <li><a href="#arbitrage">Arbitrage</a></li>
         <li><a href="#enter">Market Entry</a></li>
         <li><a href="#exit">Market Exit</a></li>
         <li><a href="#schedule">Scheduled Orders</a></li>
@@ -2107,7 +2170,7 @@ function toggle() {
 }
 
 function toggle_strategy_catalog() {
-  document.getElementById("strategy-catalog-content").style.height = "180px"
+  document.getElementById("strategy-catalog-content").style.height = "210px"
   document.getElementById("strategy-catalog-content").style.display = "block"
   document.getElementById("customized-scripts-content").style.height = "0"
   document.getElementById("customized-scripts-content").style.display = "none"

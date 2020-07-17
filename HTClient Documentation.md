@@ -103,7 +103,7 @@ Script class symbol: `stable`
 Purpose: The `stable` script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.
 Details: It maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base value and/or quote value. You can define the base value and the quote value to be set values, or use the market price that is reported by CoinGecko.
 Warning: It can place taker orders to match the price to the index value. As a result, there are situations in which external orders can be actively filled. Please reach out if more information is necessary.
-Use cases: provide liquidity and narrow spread on stablecoin markets that are pegged to a specific value, major pairs on small exchanges that want to reduce adverse arbitrage opportunities, pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.
+Use cases: provide liquidity and narrow spread on stablecoin markets or tokens that are pegged to a specific value.
 
 Account(s): main account only.
 
@@ -186,6 +186,27 @@ Account(s): both main account and secondary account. Main account is the account
 | quoteName (Optional) | Full name of the quote currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive | `str` |
 | cutlossBase (Optional) | The cutloss threshold for base currency: if the total base currency balance for the two accounts combined is lower than the threshold, the script will pause | `float` |
 | cutlossQuote (Optional) | The cutloss threshold for quote currency: if the total quote currency balance for the two accounts combined is lower than the threshold, the script will pause | `float` |
+
+### Arbitrage
+
+Script class symbol: `arbitrage`
+
+Purpose: For a given base currency, the `arbitrage` strategy can do same exchange cross pair arbitrage, cross exchange same pair arbitrage and cross exchange cross pair arbitrage.
+Details: The script will look for all arbitrage opportunities for a given base currency. If only a main account is specified, the script will only look for cross pair arbitrage opportunities on the exchange of the account. However, if both a main and a secondary accounts are specified, the script will look for all combinations of arbitrage opportunities (i.e. cross pairs on the main account exchange, cross pairs on the secondary account exchange, same pair and cross pairs accross both exchanges). Arbitrage opportunities are defined by the threshold parameter.
+Warning: for cross exchange arbitrage (whether same pair or cross pair), rebalance will be needed at times between main and secondary accounts. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below).
+Use cases: Generate profits from price discrepancies between pairs for a given currency. Works very well in combination with `maker` to effectively reduce price discrepancies between pairs for a given currency, especially major pairs on small exchanges that want to reduce adverse arbitrage opportunities and pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.
+
+Account(s): main account only for same exchange cross pair arbitrage; main account and secondary account for both same exchange and cross exchange arbitrage (whether same pair or cross pair).
+
+| Parameters | Description | Type |
+|------------|-------------|------|
+| base | Market symbol of the base currency | `str`, e.g. `eth` for the market ETH/USDT|
+| quoteListMain | All quote currencies for the pairs listed on the exchange of the main account. Seperated by comma, spaces will be ignored. | `str`, e.g. `eth, btc, usdt` for arbitrage across the pairs base/eth, base/btc and base/usdt |
+| threshold | The minimum price difference for arbitrage in order to make profits. The threshold has to cover the trading fees - for arbitrage across the same pair (on different exchanges): the trading fee will be twice the taker fees; for cross pair arbitrage (either on the same exchange or on different exchanges), the trading fee will be three times the taker fees - and withdrawal fees combined | `float`, percentage, e.g. `0.01` means 1% |
+| quoteListSecondary (Optional) | All quote currencies for the pairs listed on the exchange of the secondary account. Seperated by comma, spaces will be ignored. | `str`, e.g. `eth, btc, usdt` for arbitrage across the pairs base/eth, base/btc and base/usdt |
+| quoteOrder (Optional) | The order in which the quote currencies are quoted against each other for cross pair arbitrage (whether same exchange or different exchanges). Seperated by comma, spaces will be ignored. | `str`, e.g. For arbitrage pairs base/eth, base/btc, base/usdt, since eth is quoted against btc and usdt (eth/btc, eth/usdt), and since btc is quoted against usdt only (btc/usdt), then the `quoteOrder` should be `eth, btc, usdt` |
+| cutlossMain (Optional) | The cutloss condition(s) for the main account. Use column to seperate the currency symbol and the cutloss threshold; use comma to seperate cutloss conditions for different currencies. Spaces will be ignored | `str`, e.g. `btc: 1, eth: 30` for cutloss conditions to be 1 BTC and 30 ETH |
+| cutlossSecondary (Optional) | The cutloss condition(s) for the secondary account.  Use column to seperate the currency symbol and the cutloss threshold; use comma to seperate cutloss conditions for different currencies. Spaces will be ignored | `str`, e.g. `btc: 1, eth: 30` for cutloss conditions to be 1 BTC and 30 ETH |
 
 ### Market Entry (or Buy-Back, or Accumulate)
 
