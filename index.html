@@ -1295,7 +1295,7 @@ html {
   </tr>
   <tr>
   <td>dustValue</td>
-  <td>A volume treshold in base currency, the script will not try to out bid orders that have a volume lower than this threshold</td>
+  <td>The best orderbook bids will be ignored if their amount in base currency are lower than dustValue. The script will determine the best price level for the maintained bid to be right above the price of the first bid that has an amount higher than dustValue</td>
   <td><code>float</code></td>
   </tr>
   <tr>
@@ -1375,7 +1375,7 @@ html {
   </tr>
   <tr>
   <td>dustValue</td>
-  <td>A volume treshold in base currency, the script will not try to out bid orders that have a volume lower than this threshold</td>
+  <td>The best orderbook asks will be ignored if their amount in base currency are lower than dustValue. The script will determine the best price level for the maintained ask to be right below the price of the first bid that has an amount higher than dustValue</td>
   <td><code>float</code></td>
   </tr>
   <tr>
