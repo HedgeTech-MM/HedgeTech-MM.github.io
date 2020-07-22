@@ -1294,6 +1294,11 @@ html {
   <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomness</td>
   </tr>
   <tr>
+  <td>dustValue</td>
+  <td>A volume treshold in base currency, the script will not try to out bid orders that have a volume lower than this threshold</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
   <td>baseName (Optional)</td>
   <td>Full name of the base currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive</td>
   <td><code>str</code></td>
@@ -1367,6 +1372,11 @@ html {
   <td>Desired degree of randomness of the order amount around askVolume</td>
   <td>
   <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomness</td>
+  </tr>
+  <tr>
+  <td>dustValue</td>
+  <td>A volume treshold in base currency, the script will not try to out bid orders that have a volume lower than this threshold</td>
+  <td><code>float</code></td>
   </tr>
   <tr>
   <td>baseName (Optional)</td>

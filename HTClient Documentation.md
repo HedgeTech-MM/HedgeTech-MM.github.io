@@ -227,6 +227,7 @@ Account(s): main account only.
 | leftOver | In order to not impact the price, the script will always fill part of an order and leave a leftover amount, in base currency | `float` |
 | bidVolume | When the price is lower than the price threshold, the script will always maintain a bid order on top of the bid side of the orderbook. This parameter specifies the average amount in base currency of the maintained bid order | `float` |
 | randomness | Desired degree of randomness of the order amount around bidVolume | `float`, between 0 and 1: 0 is no randomess; 1 is maximum randomness |
+| dustValue | A volume treshold in base currency, the script will not try to out bid orders that have a volume lower than this threshold | `float` |
 | baseName (Optional) | Full name of the base currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive | `str` |
 | quoteName (Optional) | Full name of the quote currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive | `str` |
 | cutlossBase (Optional) | The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause | `float` |
@@ -251,6 +252,7 @@ Account(s): main account only.
 | leftOver | In order to not impact the price, the will always fill part of an order and leave a leftover amount, in base currency | `float` |
 | askVolume | When the price is higher than the price threshold, the script will always maintain an ask order at the bottom of the sell side of the orderbook. This parameter specifies the average amount of the maintained ask order in base currency | `float` |
 | randomness | Desired degree of randomness of the order amount around askVolume | `float`, between 0 and 1: 0 is no randomess; 1 is maximum randomness |
+| dustValue | A volume treshold in base currency, the script will not try to out bid orders that have a volume lower than this threshold | `float` |
 | baseName (Optional) | Full name of the base currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive | `str` |
 | quoteName (Optional) | Full name of the quote currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive | `str` |
 | cutlossBase (Optional) | The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause | `float` |
