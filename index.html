@@ -1498,7 +1498,7 @@ html {
   <a id="user-content-accounts" class="anchor" name="accounts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accounts</h3>
   <p>Accounts are the exchanges accounts.
   <br>An account is defined by: the exchange it is on and its API keys.</p>
-  <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.okex.com/" rel="nofollow">okex</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://www.bithumb.pro/" rel="nofollow">bithumb</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>, <a href="https://bitmax.io/" rel="nofollow">bitmax</a>.</p>
+  <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.okex.com/" rel="nofollow">okex</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://www.bithumb.pro/" rel="nofollow">bithumb</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>, <a href="https://bitmax.io/" rel="nofollow">bitmax</a>, <a href="https://poloniex.com/" rel="nofollow">poloniex</a>.</p>
   <h3>
   <a id="user-content-scripts" class="anchor" name="scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scripts</h3>
   <p>Scripts are the algorithms that run on our servers.
@@ -1515,7 +1515,7 @@ html {
   <p>The account page is used to add new accounts, manage the existing accounts, and balances.</p>
   <h3>
   <a id="user-content-scripts-page" class="anchor" name="scripts-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scripts Page</h3>
-  <p>The scripts page is used to add new scripts, manage and monitor existing scripts, clear orders and storage, and check the server logs of a script. For some script classes, the recommended funding can be checked based on the parameters it uses.</p>
+  <p>The scripts page is used to add new scripts, manage and monitor existing scripts, clear orders and storage, check the server logs of a script and download reports. For some script classes, the recommended funding can be checked based on the parameters it uses.</p>
   <h3>
   <a id="user-content-classes-page" class="anchor" name="classes-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes Page</h3>
   <p>The classes page is used to <a href="#customized-scripts">create and manage customized script classes</a>.</p>
@@ -1527,6 +1527,9 @@ html {
   <p>If there is no error in logs, the script will normally correct itself and maintain the right metrics.
   <br>If there are errors in logs, some action will have to be taken according to the error. For example, if the error says insufficient balance, you will have to refill the account accordingly.
   <br>In case the error returned by the exchange is not clear, i.e. the exchange returns an error followed by a number, please refer to the error section of the API documentation of that exchange for more information on the error encountered. A general error encountered happens when an exchange performs maintenance: in that case the error will have an HTML format (involving characters such as &lt;&gt;), at that time the script is not running and no new order is being placed.</p>
+  <h3>
+  <a id="user-content-settings-page" class="anchor" name="settings-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Settings Page</h3>
+  <p>The settings page is used to manage subscriptions, change password, customize the number of logs for the monitor, the monitor refresh rate and the report type. It provides the app version number as well as useful links such as documentation, terms of use and privacy policy.</p>
   <h3>
   <a id="user-content-search-bars" class="anchor" name="search-bars" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Search Bars</h3>
   <p>Several terms separated by commas can be entered when searching. Spaces are ignored.
@@ -2120,6 +2123,7 @@ html {
         <li><a href="#scripts-page">Scripts Page</a></li>
         <li><a href="#classes-page">Classes Page</a></li>
         <li><a href="#monitor-page">Monitor Page</a></li>
+        <li><a href="#settings-page">Settings Page</a></li>
         <li><a href="#search-bars">Search Bars</a></li>
       </ul>
     </li>
@@ -2240,7 +2244,7 @@ function toggle_ui() {
   document.getElementById("intro-content").style.display = "none"
   document.getElementById("htclient-components-content").style.height = "0"
   document.getElementById("htclient-components-content").style.display = "none"
-  document.getElementById("ui-content").style.height = "150px"
+  document.getElementById("ui-content").style.height = "180px"
   document.getElementById("ui-content").style.display = "block"
 }
 
