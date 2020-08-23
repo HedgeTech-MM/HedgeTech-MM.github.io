@@ -918,8 +918,8 @@ html {
   </tr>
   <tr>
   <td>aveVolume</td>
-  <td>Average amount in quote currency of each order</td>
-  <td><code>float</code></td>
+  <td>Average amount of each order. By default in quote currency (optionally can be set in base currency).</td>
+  <td><code>float</code> for average volume in quote currency (default); <code>str</code> starting with <code>#</code> and followed by a number for average volume in base currency</td>
   </tr>
   <tr>
   <td>randomness</td>
@@ -932,6 +932,16 @@ html {
   <td>Distance between the first ask order and the first bid order to be placed. It is recommended to set a spread of at least (3 x density) and that (spread - density) &gt; (2 x trading fees)</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>manualInitPrice (Optional)</td>
+  <td>To specify an initiation price manually</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>initPriority (Optional)</td>
+  <td>The order of in which different elements are taken into consideration to determine the initiation price. Can be any combination of the following elements: gecko (for CoinGecko price if available), last (for last traded price), mid (for mid price between ask1 and bid1), manual (for manually entered price). Seperated by comma, from the first element to be considered to the last</td>
+  <td><code>str</code>, can be any combination of the following elements: <code>gecko</code> (for CoinGecko price if available), <code>last</code> (for last traded price), <code>mid</code> (for mid price between ask1 and bid1), <code>manual</code> (for manually entered price). </td>
   </tr>
   <tr>
   <td>baseName (Optional)</td>
@@ -955,7 +965,7 @@ html {
   </tr>
   </tbody>
   </table>
-  <p>Note: after putting maker online, if you need to change the following parameters: levels, aveVolume, randomness, spread, density, you will need to first turn the script offline, clear storage, clear orders and restart with the desired parameters.</p>
+  <p>Note: after putting maker online, if you need to change the following parameters: levels, aveVolume, randomness, spread, density, the script will automatically clear storage, clear orders and restart with the desired parameters.</p>
   <h3>
   <a id="user-content-stable-market-making-or-market-making-with-price-matching" class="anchor" name="stable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stable Market Making (or Market Making with Price Matching)</h3>
   <p>Script class symbol: <code>stable</code></p>
