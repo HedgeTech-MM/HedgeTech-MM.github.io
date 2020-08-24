@@ -944,6 +944,11 @@ html {
   <td><code>str</code>, can be any combination of the following elements: <code>gecko</code> (for CoinGecko price if available), <code>last</code> (for last traded price), <code>mid</code> (for mid price between ask1 and bid1), <code>manual</code> (for manually entered price). </td>
   </tr>
   <tr>
+  <td>initFillPrevention (Optional)</td>
+  <td>Turn on to prevent the first order to be placed when initiating to fill an external order on the orderbook</td>
+  <td><code>bool</code>, default value <code>False</code>, input <code>True</code> to turn it on</td>
+  </tr>
+  <tr>
   <td>baseName (Optional)</td>
   <td>Full name of the base currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive</td>
   <td><code>str</code></td>
