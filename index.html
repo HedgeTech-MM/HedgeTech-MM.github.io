@@ -960,13 +960,13 @@ html {
   </tr>
   <tr>
   <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
-  <td><code>float</code></td>
+  <td>The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause. By default, cutloss for total balance; if triggered, the script will be paused and orders will be cancelled. Alternatively, can be set for available balance; if triggered, the script will pause but orders will not be cancelled</td>
+  <td><code>float</code> for total balance cutloss; <code>str</code> starting with <code>#</code> and followed by a number for available balance cutloss</td>
   </tr>
   <tr>
   <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
-  <td><code>float</code></td>
+  <td>The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause. By default, cutloss for total balance; if triggered, the script will be paused and orders will be cancelled. Alternatively, can be set for available balance; if triggered, the script will pause but orders will not be cancelled</td>
+  <td><code>float</code> for total balance cutloss; <code>str</code> starting with <code>#</code> and followed by a number for available balance cutloss</td>
   </tr>
   </tbody>
   </table>
