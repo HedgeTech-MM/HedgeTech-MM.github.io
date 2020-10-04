@@ -1246,7 +1246,7 @@ html {
   </tr>
   <tr>
   <td>quoteOrder (Optional)</td>
-  <td>The order in which the quote currencies are quoted against each other for cross pair arbitrage (whether same exchange or different exchanges). Seperated by comma, spaces will be ignored.</td>
+  <td>The order in which the quote currencies are typically quoted against each other. If specified, all quotes listed in quoteListMain (and quoteListSecondary, if cross exchange arbitrage) should be included. Seperated by comma, spaces will be ignored.</td>
   <td>
   <code>str</code>, e.g. For arbitrage pairs base/eth, base/btc, base/usdt, since eth is quoted against btc and usdt (eth/btc, eth/usdt), and since btc is quoted against usdt only (btc/usdt), then the <code>quoteOrder</code> should be <code>eth, btc, usdt</code>
   </td>
