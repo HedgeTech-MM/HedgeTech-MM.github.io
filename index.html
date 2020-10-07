@@ -1423,6 +1423,26 @@ html {
   <td>The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
+  <tr>
+  <td>convert (Optional)</td>
+  <td>Optionally specify to convert the initial quote received to another currency</td>
+  <td><code>str</code>, e.g. <code>usdt</code> for USDT as final target currency</td>
+  </tr>
+  <tr>
+  <td>convertDirection (Optional)</td>
+  <td>The direction in which conversion trade is happening. Must be specified if convert specified</td>
+  <td><code>str</code>, e.g. <code>sell</code> if initial quote needs to be sold to final target currency in convert parameter (i.e. conversion market is quote/convert), <code>buy</code> if final target currency in convert parameter needs to be bought with initial quote (i.e. conversion market is convert/quote)</td>
+  </tr>
+  <tr>
+  <td>convertThreshold (Optional)</td>
+  <td>Specify to only sell past that value in quote balance</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>frictionLoss (Optional)</td>
+  <td>Optionally provide an estimate of slippage in percent on market quote/convert or convert/quote plus trading fees. If specified, minPrice will be adjusted automatically so that balance in final target currency after conversion equals minPrice input</td>
+  <td><code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
   </tbody>
   </table>
   <h3>
