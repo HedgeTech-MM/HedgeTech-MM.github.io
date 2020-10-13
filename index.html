@@ -1435,12 +1435,12 @@ html {
   </tr>
   <tr>
   <td>convertThreshold (Optional)</td>
-  <td>Specify to only sell past that value in quote balance</td>
+  <td>Specify to only sell past that value in quote balance. Must be specified if convert specified (input 0 to convert all quote on the account to final target currency)</td>
   <td><code>float</code></td>
   </tr>
   <tr>
   <td>frictionLoss (Optional)</td>
-  <td>Optionally provide an estimate of slippage in percent on market quote/convert or convert/quote plus trading fees. If specified, minPrice will be adjusted automatically so that balance in final target currency after conversion equals minPrice input</td>
+  <td>Provide an estimate of slippage in percent on market quote/convert or convert/quote plus trading fees. minPrice will be adjusted automatically so that balance in final target currency after conversion equals minPrice input. Must be specified if convert specified (input 0 to ignore trading fees and slippage)</td>
   <td><code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
   </tbody>
