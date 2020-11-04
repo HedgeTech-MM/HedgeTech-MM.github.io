@@ -1204,6 +1204,84 @@ html {
   </tbody>
   </table>
   <h3>
+  <a id="user-content-migrate" class="anchor" name="migrate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pool Liquidity Migration</h3>
+  <p>Purpose: The <code>migrate</code> strategy builds and maintains a dense tradeable orderbook on an exchange by taking liquidity provided by the community from a liquidity pool. This strategy makes profits from strictly hedging the risk.<br>Details: Whenever the orders maintained on the exchange are filled, it will hedge the position by swapping and thus taking liquidity from liquidity pool.<br>Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.<br>Use cases: build and maintain a tradeable orderbook on an exchange while fully hedging the risk against a liquidity pool and realizing profits.</p>
+  <p>Account(s): both main account and swap wallet. Main account is the account on the exchange on which liquidity will be added (orderbook will be built), swap wallet is the wallet connected to the liquidity pool. The swap account first needs to follow the instructions on the liquidity pool to approve swaping for the desired pair.</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Parameters</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>base</td>
+  <td>Market symbol of the base currency on the exchange</td>
+  <td>
+  <code>str</code>, e.g. <code>token</code> for the market TOKEN/BTC</td>
+  </tr>
+  <tr>
+  <td>quote</td>
+  <td>Market symbol of the quote currency on the exchange</td>
+  <td>
+  <code>str</code>, e.g. <code>btc</code> for the market TOKEN/BTC</td>
+  </tr>
+  <tr>
+  <td>baseAdress</td>
+  <td>Contract address of the base. Also used to check balances on the swap account page</td>
+  <td>
+  <code>str</code></td>
+  </tr>
+  <tr>
+  <td>minSwapVolume</td>
+  <td>Minimum volume in ETH per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
+  <td>
+  <code>float</code></td>
+  </tr>
+  <tr>
+  <td>divergence</td>
+  <td>The price distance between the orders placed on the exchange. The larger divergence is, the higher the maintained spread (spread will be 3 x divergence) and the lower the maintained order density will be on the exchange. However density has to be large enough to cover the trading fees on the exchange, the swap (network) fees as well as transfer fees between the liquidity pool and the exchange. </td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>percentUpper</td>
+  <td>The highest percentage of liquidity to be migrated from the liquidity pool to the exchange. If the liquidity between price levels on the liquidity pool exceeds the volume of orders on the exchange by that percentage, resize the orders on the exchange</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%. In order to hedge the position effectively, it is recommended to limit this parameter to a maximum of 0.5</td>
+  </tr>
+  <tr>
+  <td>percentLower</td>
+  <td>The lowest percentage of liquidity to be migrated from the liquidity pool to the exchange. If the liquidity between price levels on the liquidity pool is lower than the volume of orders on the exchange by that percentage, resize the orders on the exchange</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%. In order to hedge the position effectively, it is recommended to limit this parameter to a maximum of half of the percentUpper value</td>
+  </tr>
+  <tr>
+  <td>volumeCap</td>
+  <td>A hard maximum on the amount of each order in quote currency on the exchange. It is recommended to set a volumeCap that has a higher USD value than the minSwapVolume USD value</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>levels</td>
+  <td>Number of orders maintained on each side of the orderbook on the exchange</td>
+  <td><code>int</code></td>
+  </tr>
+  <tr>
+  <td>randomness</td>
+  <td>When the order amount exceeds the <code>volumeCap</code> for a given order, instead of placing an order exactly at the <code>volumeCap</code>, it will place an order around <code>volumeCap</code> with a degree of randomness.</td>
+  <td>
+  <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomnesss</td>
+  </tr>
+  <tr>
+  <td>isETHQuote (Optional)</td>
+  <td>Do not specify if quote is ETH on the exchange. Must be specified if quote is not ETH on the exchange. Considering the quote on the exchange pair, if that quote itself is listed against ETH (such as QUOTE/ETH), specify <code>True</code>; if ETH is listed against that quote (such as ETH/QUOTE), specify <code>False</code></td>
+  <td><code>bool</code>, e.g. if the market pair is TOKEN/BCH specify <code>True</code> since BCH/ETH exists but not ETH/BCH. In contrast, if the market pair is TOKEN/USDT specify <code>FALSE</code> since ETH/USDT exists but not USDT/ETH</td>
+  </tr>
+  </tbody>
+  </table>
+  <h3>
   <a id="user-content-arbitrage" class="anchor" name="arbitrage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arbitrage</h3>
   <p>Script class symbol: <code>arbitrage</code></p>
   <p>Purpose: For a given base currency, the <code>arbitrage</code> strategy can do same exchange cross pair arbitrage, cross exchange same pair arbitrage and cross exchange cross pair arbitrage.
@@ -1541,9 +1619,9 @@ html {
   <a id="user-content-htclient-components" class="anchor" name="htclient-components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient Components</h2>
   <h3>
   <a id="user-content-accounts" class="anchor" name="accounts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accounts</h3>
-  <p>Accounts are the exchanges accounts.
-  <br>An account is defined by: the exchange it is on and its API keys. Some exchanges may require a trading password; others may require to specify if the main account is to be used (input <code>$main</code> in the relevant field in HTClient's account page) or if a subaccount is to be used.</p>
-  <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.okex.com/" rel="nofollow">okex</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://www.bithumb.pro/" rel="nofollow">bithumb</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>, <a href="https://bitmax.io/" rel="nofollow">bitmax</a>, <a href="https://poloniex.com/" rel="nofollow">poloniex</a>, <a href="https://probit.com/" rel="nofollow">probit</a>, <a href="https://btse.com/" rel="nofollow">btse</a>, <a href="https://upbit.com/home" rel="nofollow">upbit</a>, <a href="https://www.mxc.com/" rel="nofollow">mxc</a>, <a href="https://www.bitcoin.com/" rel="nofollow">bitcoindotcom</a>, <a href="https://ftx.com/" rel="nofollow">ftx</a>.</p>
+  <p>Accounts are the exchanges accounts. Accounts also more broadly designates wallets connected to liquidity pools (note that you first need to approve a wallet for swaping on given pair of a liquidity pool before being able to use it on HTClient).
+  <br>An account is defined by: the exchange it is on and its API keys. Some exchanges may require a trading password; others may require to specify if the main account is to be used (input <code>$main</code> in the relevant field in HTClient's account page) or if a subaccount is to be used; yet others (such as liquidity pools) require wallet information.</p>
+  <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.okex.com/" rel="nofollow">okex</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://www.bithumb.pro/" rel="nofollow">bithumb</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>, <a href="https://bitmax.io/" rel="nofollow">bitmax</a>, <a href="https://poloniex.com/" rel="nofollow">poloniex</a>, <a href="https://probit.com/" rel="nofollow">probit</a>, <a href="https://btse.com/" rel="nofollow">btse</a>, <a href="https://upbit.com/home" rel="nofollow">upbit</a>, <a href="https://www.mxc.com/" rel="nofollow">mxc</a>, <a href="https://www.bitcoin.com/" rel="nofollow">bitcoindotcom</a>, <a href="https://ftx.com/" rel="nofollow">ftx</a>, <a href="https://uniswap.org/" rel="nofollow">uniswap</a>.</p>
   <h3>
   <a id="user-content-scripts" class="anchor" name="scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scripts</h3>
   <p>Scripts are the algorithms that run on our servers.
@@ -2147,6 +2225,7 @@ html {
         <li><a href="#maker">Market Making</a></li>
         <li><a href="#stable">Stable Market Making</a></li>
         <li><a href="#replication">Orderbook Replication</a></li>
+        <li><a href="#migrate">Pool Liquidity Migration</a></li>
         <li><a href="#arbitrage">Arbitrage</a></li>
         <li><a href="#enter">Market Entry</a></li>
         <li><a href="#exit">Market Exit</a></li>
@@ -2229,7 +2308,7 @@ function toggle() {
 }
 
 function toggle_strategy_catalog() {
-  document.getElementById("strategy-catalog-content").style.height = "210px"
+  document.getElementById("strategy-catalog-content").style.height = "240px"
   document.getElementById("strategy-catalog-content").style.display = "block"
   document.getElementById("customized-scripts-content").style.height = "0"
   document.getElementById("customized-scripts-content").style.display = "none"
