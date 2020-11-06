@@ -1279,6 +1279,21 @@ html {
   <td>Do not specify if quote is ETH on the exchange. Must be specified if quote is not ETH on the exchange. Considering the quote on the exchange pair, if that quote itself is listed against ETH (such as QUOTE/ETH), specify <code>True</code>; if ETH is listed against that quote (such as ETH/QUOTE), specify <code>False</code></td>
   <td><code>bool</code>, e.g. if the market pair is TOKEN/BCH specify <code>True</code> since BCH/ETH exists but not ETH/BCH. In contrast, if the market pair is TOKEN/USDT specify <code>FALSE</code> since ETH/USDT exists but not USDT/ETH</td>
   </tr>
+  <tr>
+  <td>cutlossBase (Optional)</td>
+  <td>The cutloss threshold for base currency. If the total base currency balance for either the exchange account or swap waller is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>cutlossQuote (Optional)</td>
+  <td>The cutloss threshold for quote currency. If the total quote currency balance for the exchange account is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>cutlossETH (Optional)</td>
+  <td>The cutloss threshold for ETH. If the total ETH currency balance for the swap wallet is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td><code>float</code></td>
+  </tr>
   </tbody>
   </table>
   <h3>
