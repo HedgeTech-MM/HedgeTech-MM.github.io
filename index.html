@@ -963,14 +963,14 @@ html {
   <td><code>str</code></td>
   </tr>
   <tr>
-  <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency. By default, cutloss for total balance; if triggered (total balance under threshold), the script will be paused and orders will be cancelled. Alternatively, can be set for available balance; if triggered (available balance under threshold), the script will pause but orders will not be cancelled</td>
-  <td><code>float</code> for total balance cutloss; <code>str</code> starting with <code>#</code> and followed by a number for available balance cutloss</td>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency. By default, hard stop condition for total balance; if triggered (total balance under threshold), the script will be paused and orders will be cancelled. Alternatively, soft stop can be set for available balance; if triggered (available balance under threshold), the script will pause but orders will not be cancelled</td>
+  <td><code>float</code> for total balance hard stop condition; <code>str</code> starting with <code>#</code> and followed by a number for available balance soft stop condition</td>
   </tr>
   <tr>
-  <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency. By default, cutloss for total balance; if triggered (total balance under threshold), the script will be paused and orders will be cancelled. Alternatively, can be set for available balance; if triggered (available balance under threshold), the script will pause but orders will not be cancelled</td>
-  <td><code>float</code> for total balance cutloss; <code>str</code> starting with <code>#</code> and followed by a number for available balance cutloss</td>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency. By default, hard stop condition for total balance; if triggered (total balance under threshold), the script will be paused and orders will be cancelled. Alternatively, soft stop can be set for available balance; if triggered (available balance under threshold), the script will pause but orders will not be cancelled</td>
+  <td><code>float</code> for total balance hard stop condition; <code>str</code> starting with <code>#</code> and followed by a number for available balance soft stop condition</td>
   </tr>
   </tbody>
   </table>
@@ -1055,13 +1055,13 @@ html {
   <td><code>str</code></td>
   </tr>
   <tr>
-  <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
@@ -1192,13 +1192,13 @@ html {
   <td><code>str</code></td>
   </tr>
   <tr>
-  <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency: if the total base currency balance for the two accounts combined is lower than the threshold, the script will pause</td>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency: if the total quote currency balance for the two accounts combined is lower than the threshold, the script will pause</td>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
@@ -1280,18 +1280,18 @@ html {
   <td><code>bool</code>, e.g. if the market pair is TOKEN/BCH specify <code>True</code> since BCH/ETH exists but not ETH/BCH. In contrast, if the market pair is TOKEN/USDT specify <code>FALSE</code> since ETH/USDT exists but not USDT/ETH</td>
   </tr>
   <tr>
-  <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency. If the total base currency balance for either the exchange account or swap waller is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency. If the total base currency balance for either the exchange account or swap waller is lower than the threshold, the script will pause and orders will be cancelled</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency. If the total quote currency balance for the exchange account is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency. If the total quote currency balance for the exchange account is lower than the threshold, the script will pause and orders will be cancelled</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>cutlossETH (Optional)</td>
-  <td>The cutloss threshold for ETH. If the total ETH currency balance for the swap wallet is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td>stopConditionETH (Optional)</td>
+  <td>The stop condition for ETH. If the total ETH currency balance for the swap wallet is lower than the threshold, the script will pause and orders will be cancelled</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
@@ -1345,16 +1345,16 @@ html {
   </td>
   </tr>
   <tr>
-  <td>cutlossMain (Optional)</td>
-  <td>The cutloss condition(s) for the main account. Use column to seperate the currency symbol and the cutloss threshold; use comma to seperate cutloss conditions for different currencies. Spaces will be ignored</td>
+  <td>stopConditionMain (Optional)</td>
+  <td>The stop condition(s) for the main account. Use column to seperate the currency symbol and the stop threshold; use comma to seperate stop conditions for different currencies. Spaces will be ignored</td>
   <td>
-  <code>str</code>, e.g. <code>btc: 1, eth: 30</code> for cutloss conditions to be 1 BTC and 30 ETH</td>
+  <code>str</code>, e.g. <code>btc: 1, eth: 30</code> for stop conditions to be 1 BTC and 30 ETH</td>
   </tr>
   <tr>
-  <td>cutlossSecondary (Optional)</td>
-  <td>The cutloss condition(s) for the secondary account.  Use column to seperate the currency symbol and the cutloss threshold; use comma to seperate cutloss conditions for different currencies. Spaces will be ignored</td>
+  <td>stopConditionSecondary (Optional)</td>
+  <td>The stop condition(s) for the secondary account.  Use column to seperate the currency symbol and the stop threshold; use comma to seperate stop conditions for different currencies. Spaces will be ignored</td>
   <td>
-  <code>str</code>, e.g. <code>btc: 1, eth: 30</code> for cutloss conditions to be 1 BTC and 30 ETH</td>
+  <code>str</code>, e.g. <code>btc: 1, eth: 30</code> for stop conditions to be 1 BTC and 30 ETH</td>
   </tr>
   </tbody>
   </table>
@@ -1427,13 +1427,13 @@ html {
   <td><code>str</code></td>
   </tr>
   <tr>
-  <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
@@ -1507,13 +1507,13 @@ html {
   <td><code>str</code></td>
   </tr>
   <tr>
-  <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   <tr>
@@ -1618,13 +1618,13 @@ html {
   <td><code>str</code></td>
   </tr>
   <tr>
-  <td>cutlossBase (Optional)</td>
-  <td>The cutloss threshold for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>cutlossQuote (Optional)</td>
-  <td>The cutloss threshold for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
