@@ -1596,7 +1596,7 @@ html {
   <tr>
   <td>adjustAsk (Optional)</td>
   <td>The condition to adjust the ask order</td>
-  <td><code>expression</code> (see <a href="#syntax">syntax</a>). The value returned by the expression has to be a <code>bool</code>, e.g. if askPrice is ask*1.02 and adjustAdk >= ask*1.04, if the price drops and the ask order is more than 4% higher than market price: adjust this ask to 2%</td>
+  <td><code>expression</code> (see <a href="#syntax">syntax</a>). The value returned by the expression has to be a <code>bool</code>, e.g. if askPrice is set to ask*1.02 and adjustAdk is set to price>= ask*1.04, if the price drops and the ask order is more than 4% higher than market price: adjust this ask to 2%</td>
   </tr>
   <tr>
   <td>maxBids (Optional)</td>
