@@ -866,13 +866,19 @@ html {
   <li>
   <code>bid</code>: The highest bid price</li>
   <li>
-  <code>mid</code>: The middle price between the lowest ask and the highest bid</li>
-  <li>
   <code>unit</code>: The base price increment</li>
   <li>
-  <code>unitR</code>: A random integer among -1, 0 or 1</li>
+  <code>last</code>: The last traded price</li>
   <li>
-  <code>uniformR</code>: A random float between 0 and 1</li>
+  <code>price</code>: The price of the standing ask order (only applies to adjustAsk in <code>askflip</code>)</li>
+  <li>
+  <code>volume</code>: The quantity of the standing ask order (only applies to adjustAsk in <code>askflip</code>)</li>
+  <li>
+  <code>mid</code>: The middle price between the lowest ask and the highest bid (only applies to <code>schedule</code>)</li>
+  <li>
+  <code>unitR</code>: A random integer among -1, 0 or 1 (only applies to <code>schedule</code>)</li>
+  <li>
+  <code>uniformR</code>: A random float between 0 and 1 (only applies to <code>schedule</code>)</li>
   </ul>
   <p>e.g. <code>bid+unit</code> will return the price that is one base price increment higher than the highest bid</p>
   <h3>
@@ -1539,6 +1545,82 @@ html {
   </tbody>
   </table>
   <h3>
+  <a id="user-content-askflip" class="anchor" name="askflip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ask Flipping (PDMM initiated by market exit)</h3>
+  <p>Script class symbol: <code>askflip</code></p>
+  <p>Purpose: The <code>askflip</code> strategy is designed to buy and sell for profits, with the possibility to sell more than what is being bought.<br>Details: The script will place one ask first. Once this ask is being filled, a bid is placed (either of the same quantity or lower) at a profitable price level and the cycle repeats (the bid can be standing, waiting to be filled).<br>Use cases: profit driven market making by flipping orders. The script starts by exiting the market first so situations with base currency and no quote are very suitable. It supports the market on the way up (only 1 ask at a time) and potentially several bids on the way down (at profitable levels). It can also act as a slow liquidation mechanism if the bid quantity is set to be a fraction of the ask quantity.</p>
+  <p>Account(s): main account only.</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Parameters</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>base</td>
+  <td>Market symbol of the base currency</td>
+  <td>
+  <code>str</code>, e.g. <code>eth</code> for the market ETH/USDT</td>
+  </tr>
+  <tr>
+  <td>quote</td>
+  <td>Market symbol of the quote currency</td>
+  <td>
+  <code>str</code>, e.g. <code>usdt</code> for the market ETH/USDT</td>
+  </tr>
+  <tr>
+  <td>askPrice</td>
+  <td>The expression for the price at which the script places ask orders</td>
+  <td>
+  <code>expression</code> (see <a href="#syntax">syntax</a>). The value returned by the expression has to be a <code>float</code>, e.g. <code>ask*1.02</code> to place the ask at 2% above ask1</td>
+  </tr>
+  <tr>
+  <td>askVolume</td>
+  <td>The average quantity for the ask order in base currency</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>randomness</td>
+  <td>Desired degree of randomness of the order amount around askVolume</td>
+  <td>
+  <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomness</td>
+  </tr>
+  <tr>
+  <td>margin</td>
+  <td>The price difference in percent between the filled ask and the placed bid</td>
+  <td>
+  <code>float</code>, percentage</td>
+  </tr>
+  <tr>
+  <td>adjustAsk (Optional)</td>
+  <td>The condition to adjust the ask order</td>
+  <td><code>expression</code> (see <a href="#syntax">syntax</a>). The value returned by the expression has to be a <code>bool</code>, e.g. if askPrice is ask*1.02 and adjustAdk >= ask*1.04, if the price drops and the ask order is more than 4% higher than market price: adjust this ask to 2%</td>
+  </tr>
+  <tr>
+  <td>maxBids (Optional)</td>
+  <td>Maximum number of standing bid orders to be placed. If exceeded, stop placing additional asks (bids still standing)</td>
+  <td><code>int</code></td>
+  </tr>
+  <tr>
+  <td>percentBid (Optional)</td>
+  <td>The percent of askVolume that should be placed as a bid</td>
+  <td><code>float</code>, percentage</td>
+  </tr>
+  <tr>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency: if the total quote currency balance is lower than the threshold, the script will pause</td>
+  <td><code>float</code></td>
+  </tr>
+  </tbody>
+  </table>
+  <h3>
   <a id="user-content-scheduled-orders" class="anchor" name="schedule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scheduled Orders</h3>
   <p>Script class symbol: <code>schedule</code></p>
   <p>Purpose: <code>schedule</code> recursive orders over time, spaced out by a given time interval.<br>Details: Every time it places a buy order, it will use the account that has more quote currency; everytime it places a sell order, it will use the account that has less quote currency.<br>Use cases: customize a trading strategy without any coding background.</p>
@@ -1584,7 +1666,7 @@ html {
   <td>buyPrice (Optional)</td>
   <td>The price of the buy orders to be placed</td>
   <td>
-  <code>float</code> tp place the orders at a set price, <code>expression</code> to place the orders according to the market conditions</td>
+  <code>float</code> tp place the orders at a set price, <code>expression</code> (see <a href="#syntax">syntax</a>) to place the orders according to the market conditions</td>
   </tr>
   <tr>
   <td>sellAmount (Optional)</td>
@@ -1595,7 +1677,7 @@ html {
   <td>sellPrice (Optional)</td>
   <td>The price of the sell orders to be placed</td>
   <td>
-  <code>float</code> to place the orders at a set price, <code>expression</code> to place the order according to the market conditions</td>
+  <code>float</code> to place the orders at a set price, <code>expression</code> (see <a href="#syntax">syntax</a>) to place the order according to the market conditions</td>
   </tr>
   <tr>
   <td>async (Optional)</td>
@@ -1645,7 +1727,7 @@ html {
   <h3>
   <a id="user-content-classes" class="anchor" name="classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h3>
   <p>A script class is the strategy that a script uses. There are public script classes that are available for all users, and there are also customized script classes that are defined by each individual user.</p>
-  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a> and <a href="#schedule">schedule</a>.</p>
+  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a>, <a href="#askflip">askflip</a> and <a href="#schedule">schedule</a>.</p>
   <h2>
   <a id="user-content-htclient-user-interface" class="anchor" name="htclient-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient User Interface</h2>
   <h3>
@@ -2244,6 +2326,7 @@ html {
         <li><a href="#arbitrage">Arbitrage</a></li>
         <li><a href="#enter">Market Entry</a></li>
         <li><a href="#exit">Market Exit</a></li>
+        <li><a href="#askflip">Ask Flipping</a></li>
         <li><a href="#schedule">Scheduled Orders</a></li>
       </ul>
     </li>
@@ -2323,7 +2406,7 @@ function toggle() {
 }
 
 function toggle_strategy_catalog() {
-  document.getElementById("strategy-catalog-content").style.height = "240px"
+  document.getElementById("strategy-catalog-content").style.height = "270px"
   document.getElementById("strategy-catalog-content").style.display = "block"
   document.getElementById("customized-scripts-content").style.height = "0"
   document.getElementById("customized-scripts-content").style.display = "none"
