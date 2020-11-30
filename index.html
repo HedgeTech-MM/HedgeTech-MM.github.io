@@ -870,10 +870,10 @@ html {
   <li>
   <code>last</code>: The last traded price</li>
   <li>
-  <code>price</code>: The price of the standing ask order (only applies to adjustAsk in <code>askflip</code>)</li>
+ <!--  <code>price</code>: The price of the standing ask order (only applies to adjustAsk in <code>askflip</code>)</li>
   <li>
   <code>volume</code>: The quantity of the standing ask order (only applies to adjustAsk in <code>askflip</code>)</li>
-  <li>
+  <li> -->
   <code>mid</code>: The middle price between the lowest ask and the highest bid (only applies to <code>schedule</code>)</li>
   <li>
   <code>unitR</code>: A random integer among -1, 0 or 1 (only applies to <code>schedule</code>)</li>
@@ -1544,7 +1544,7 @@ html {
   </tr>
   </tbody>
   </table>
-  <h3>
+<!--   <h3>
   <a id="user-content-askflip" class="anchor" name="askflip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ask Flipping (PDMM initiated by market exit)</h3>
   <p>Script class symbol: <code>askflip</code></p>
   <p>Purpose: The <code>askflip</code> strategy is designed to buy and sell for profits, with the possibility to sell more than what is being bought.<br>Details: The script will place one ask first. Once this ask is being filled, a bid is placed (either of the same quantity or lower) at a profitable price level and the cycle repeats (the bid can be standing, waiting to be filled).<br>Use cases: profit driven market making by flipping orders. The script starts by exiting the market first so situations with base currency and no quote are very suitable. It supports the market on the way up (only 1 ask at a time) and potentially several bids on the way down (at profitable levels). It can also act as a slow liquidation mechanism if the bid quantity is set to be a fraction of the ask quantity.</p>
@@ -1619,7 +1619,7 @@ html {
   <td><code>float</code></td>
   </tr>
   </tbody>
-  </table>
+  </table> -->
   <h3>
   <a id="user-content-scheduled-orders" class="anchor" name="schedule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scheduled Orders</h3>
   <p>Script class symbol: <code>schedule</code></p>
@@ -1727,7 +1727,7 @@ html {
   <h3>
   <a id="user-content-classes" class="anchor" name="classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h3>
   <p>A script class is the strategy that a script uses. There are public script classes that are available for all users, and there are also customized script classes that are defined by each individual user.</p>
-  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a>, <a href="#askflip">askflip</a> and <a href="#schedule">schedule</a>.</p>
+  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a><!-- , <a href="#askflip">askflip</a> --> and <a href="#schedule">schedule</a>.</p>
   <h2>
   <a id="user-content-htclient-user-interface" class="anchor" name="htclient-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient User Interface</h2>
   <h3>
@@ -2326,7 +2326,7 @@ html {
         <li><a href="#arbitrage">Arbitrage</a></li>
         <li><a href="#enter">Market Entry</a></li>
         <li><a href="#exit">Market Exit</a></li>
-        <li><a href="#askflip">Ask Flipping</a></li>
+        <!-- <li><a href="#askflip">Ask Flipping</a></li> -->
         <li><a href="#schedule">Scheduled Orders</a></li>
       </ul>
     </li>
@@ -2406,7 +2406,7 @@ function toggle() {
 }
 
 function toggle_strategy_catalog() {
-  document.getElementById("strategy-catalog-content").style.height = "270px"
+  document.getElementById("strategy-catalog-content").style.height = "240px"
   document.getElementById("strategy-catalog-content").style.display = "block"
   document.getElementById("customized-scripts-content").style.height = "0"
   document.getElementById("customized-scripts-content").style.display = "none"
