@@ -1235,14 +1235,14 @@ html {
   <code>str</code>, e.g. <code>btc</code> for the market TOKEN/BTC</td>
   </tr>
   <tr>
-  <td>baseAdress</td>
-  <td>Contract address of the base. Also used to check balances on the swap account page</td>
+  <td>route</td>
+  <td>A comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. If the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route</td>
   <td>
-  <code>str</code></td>
+  Sequence of <code>str</code> separated by <code>,</code>. Input <code>eth</code> if ETH is a base or quote. If ETH is found along the route, input WETH address instead</td>
   </tr>
   <tr>
   <td>minSwapVolume</td>
-  <td>Minimum volume in ETH per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
+  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
   <td>
   <code>float</code></td>
   </tr>
@@ -1281,11 +1281,6 @@ html {
   <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomnesss</td>
   </tr>
   <tr>
-  <td>isETHQuote (Optional)</td>
-  <td>Do not specify if quote is ETH on the exchange. Must be specified if quote is not ETH on the exchange. Considering the quote on the exchange pair, if that quote itself is listed against ETH (such as QUOTE/ETH), specify <code>True</code>; if ETH is listed against that quote (such as ETH/QUOTE), specify <code>False</code></td>
-  <td><code>bool</code>, e.g. if the market pair is TOKEN/BCH specify <code>True</code> since BCH/ETH exists but not ETH/BCH. In contrast, if the market pair is TOKEN/USDT specify <code>FALSE</code> since ETH/USDT exists but not USDT/ETH</td>
-  </tr>
-  <tr>
   <td>stopConditionBase (Optional)</td>
   <td>The stop condition for base currency. If the total base currency balance for either the exchange account or swap waller is lower than the threshold, the script will pause and orders will be cancelled</td>
   <td><code>float</code></td>
@@ -1293,11 +1288,6 @@ html {
   <tr>
   <td>stopConditionQuote (Optional)</td>
   <td>The stop condition for quote currency. If the total quote currency balance for the exchange account is lower than the threshold, the script will pause and orders will be cancelled</td>
-  <td><code>float</code></td>
-  </tr>
-  <tr>
-  <td>stopConditionETH (Optional)</td>
-  <td>The stop condition for ETH. If the total ETH currency balance for the swap wallet is lower than the threshold, the script will pause and orders will be cancelled</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
