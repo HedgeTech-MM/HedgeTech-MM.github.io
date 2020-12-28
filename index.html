@@ -830,10 +830,10 @@ html {
   <a id="user-content-target-audience-and-target-markets" class="anchor" name="target-audience-and-target-markets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Target Audience and Target Markets</h3>
   <p>HTClient is particularly suitable for token issuers, exchanges, market makers and broker/dealers.</p>
   <p>Token issuers can operate the systems within their company, on all exchanges they are listed on.<br>Exchanges can operate the systems in-house for their main pairs as well as all other altcoins listed on their platform.<br>Market makers can chose to either use the algorithms designed by HedgeTech or to design their own custom scripts, benefiting from our integration capabilities and server infrastructure.<br>Broker/dealers can add to the services they offer with an all-in-one liquidity provision system.</p>
-  <p>The scripts are suitable for any market environment: major coins, altcoins, security tokens, perpetual contracts and all other digital assets.</p>
+  <p>The scripts are suitable for any market environment: major coins, altcoins, utility tokens, security tokens, futures, perpetual contracts, swaps, ETFs and all other digital assets.</p>
   <h3>
   <a id="user-content-installation" class="anchor" name="installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
-  <p>After registering your HedgeTech account, a <code>username</code>, <code>password</code> and <code>secretkey</code> will be given to access HTClient, each of these should be carefully saved and securely stored.</p>
+  <p>After registering a HedgeTech account, the <code>username</code>, <code>password</code> and <code>secretkey</code> can be used to access HTClient. Each of these should be carefully saved and securely stored.</p>
   <h4>
   <a id="user-content-windows" class="anchor" href="#windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows</h4>
   <p>After downloading HTClient at <a href="https://www.hedgetech.io" rel="nofollow">https://www.hedgetech.io</a>, the first time HTClient.exe is opened, a message might show up saying that Windows Defender Smartscreen has protected the PC. If that is the case, please click <code>More info</code> and if the developer shows <code>HedgeTech LLC</code>, safely select <code>Run Anyway</code>. The next times HTClient.exe is opened, this extra step is not required.</p>
@@ -884,6 +884,9 @@ html {
   <h3>
   <a id="user-content-api-permissions" class="anchor" name="api-permissions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API Permissions</h3>
   <p>For your own security, please make sure to manage permissions if the exchange offers this feature. In order to use HTClient read/write permissions for everything except withdrawal/deposit should be enabled.</p>
+  <h3>
+  <a id="user-content-python-library" class="anchor" name="python-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python Library</h3>
+  <p>HedgeTech has developed and maintains <a href="https://pypi.org/project/htwrapper/" rel="nofollow">htwrapper</a>, its official Python Library. It allows users to interact with HedgeTech's API and gives programmatic access to all of HTClient's functionalities and more. Installation is available via the command <code>pip install htwrapper</code>. A detailed documentation is available via the command <code>help(htwrapper)</code>.</p>
   <h2>
   <a id="user-content-strategy-catalog" class="anchor" name="strategy-catalog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Strategy Catalog</h2>
   <h3>
@@ -1703,7 +1706,7 @@ html {
   <a id="user-content-htclient-components" class="anchor" name="htclient-components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient Components</h2>
   <h3>
   <a id="user-content-accounts" class="anchor" name="accounts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accounts</h3>
-  <p>Accounts are the exchanges accounts. Accounts also more broadly designates wallets connected to liquidity pools (note that you first need to approve a wallet for swaping on given pair of a liquidity pool before being able to use it on HTClient).
+  <p>Accounts are the exchanges accounts. Accounts also more broadly designate wallets connected to liquidity pools (note that you first need to approve a wallet for swaping on given pair of a liquidity pool before being able to use it on HTClient).
   <br>An account is defined by: the exchange it is on and its API keys. Some exchanges may require a trading password; others may require to specify if the main account is to be used (input <code>$main</code> in the relevant field in HTClient's account page) or if a subaccount is to be used; yet others (such as liquidity pools) require wallet information.</p>
   <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.okex.com/" rel="nofollow">okex</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://www.bithumb.pro/" rel="nofollow">bithumb</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>, <a href="https://bitmax.io/" rel="nofollow">bitmax</a>, <a href="https://poloniex.com/" rel="nofollow">poloniex</a>, <a href="https://probit.com/" rel="nofollow">probit</a>, <a href="https://btse.com/" rel="nofollow">btse</a>, <a href="https://upbit.com/home" rel="nofollow">upbit</a>, <a href="https://www.mxc.com/" rel="nofollow">mxc</a>, <a href="https://www.bitcoin.com/" rel="nofollow">bitcoindotcom</a>, <a href="https://ftx.com/" rel="nofollow">ftx</a>, <a href="https://uniswap.org/" rel="nofollow">uniswap</a>, <a href="https://www.gate.io/" rel="nofollow">gate.io</a>, <a href="https://www.bitmart.com/" rel="nofollow">bitmart</a>.</p>
   <h3>
@@ -1734,6 +1737,9 @@ html {
   <p>If there is no error in logs, the script will normally correct itself and maintain the right metrics.
   <br>If there are errors in logs, some action will have to be taken according to the error. For example, if the error says insufficient balance, you will have to refill the account accordingly.
   <br>In case the error returned by the exchange is not clear, i.e. the exchange returns an error followed by a number, please refer to the error section of the API documentation of that exchange for more information on the error encountered. A general error encountered happens when an exchange performs maintenance: in that case the error will have an HTML format (involving characters such as &lt;&gt;), at that time the script is not running and no new order is being placed.</p>
+  <h3>
+  <a id="user-content-hedgetech-account-page" class="anchor" name="hedgetech-account-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HedgeTech Account Page</h3>
+  <p>The HedgeTech account page shows user's information and allows to manage scripts subscription.</p>
   <h3>
   <a id="user-content-settings-page" class="anchor" name="settings-page" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Settings Page</h3>
   <p>The settings page is used to manage subscriptions, change password, customize the number of logs for the monitor, the monitor refresh rate and the report type. It provides the app version number as well as useful links such as documentation, terms of use and privacy policy.</p>
@@ -2301,6 +2307,7 @@ html {
         <li><a href="#syntax">Syntax</a></li>
         <li><a href="#ip-adresses">IP Addresses</a></li>
         <li><a href="#api-permissions">API Permissions</a></li>
+        <li><a href="#python-library">Python Library</a></li>
       </ul>
     </li>
     <li>
@@ -2332,6 +2339,7 @@ html {
         <li><a href="#scripts-page">Scripts Page</a></li>
         <li><a href="#classes-page">Classes Page</a></li>
         <li><a href="#monitor-page">Monitor Page</a></li>
+        <li><a href="#hedgetech-account-page">HedgeTech Account Page</a></li>
         <li><a href="#settings-page">Settings Page</a></li>
         <li><a href="#search-bars">Search Bars</a></li>
       </ul>
@@ -2423,7 +2431,7 @@ function toggle_intro() {
   document.getElementById("customized-scripts-content").style.display = "none"
   document.getElementById("strategy-catalog-content").style.height = "0"
   document.getElementById("strategy-catalog-content").style.display = "none"
-  document.getElementById("intro-content").style.height = "150px"
+  document.getElementById("intro-content").style.height = "180px"
   document.getElementById("intro-content").style.display = "block"
   document.getElementById("htclient-components-content").style.height = "0"
   document.getElementById("htclient-components-content").style.display = "none"
@@ -2453,7 +2461,7 @@ function toggle_ui() {
   document.getElementById("intro-content").style.display = "none"
   document.getElementById("htclient-components-content").style.height = "0"
   document.getElementById("htclient-components-content").style.display = "none"
-  document.getElementById("ui-content").style.height = "180px"
+  document.getElementById("ui-content").style.height = "210px"
   document.getElementById("ui-content").style.display = "block"
 }
 
