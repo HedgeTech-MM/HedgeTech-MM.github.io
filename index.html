@@ -892,8 +892,10 @@ html {
   <h3>
   <a id="user-content-market-making" class="anchor" name="maker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Market Making</h3>
   <p>Script class symbol: <code>maker</code></p>
-  <p>Purpose: The <code>maker</code> script class provides liquidity to the market, it narrows the market spread and it makes profits from the spread when the price fluctuates.<br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair. It lets the price behave according to supply and demand in the market, it adjusts the maintained orders automatically: when people sell, the price will move down; when people buy, the price will move up.<br>Use cases: provide liquidity on any market and offer a competitive spread in price to achieve an efficient market environment where traders can enter and exit at fair prices.</p>
-  <p>Account(s): main account only.</p>
+  <p>Purpose: The <code>maker</code> script class provides liquidity to the market, it narrows the market spread and it makes profits from the spread when the price fluctuates.
+  <br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair. It lets the price behave according to supply and demand in the market, it adjusts the maintained orders automatically: when people sell, the price will move down; when people buy, the price will move up.
+  <br>Use cases: Provide liquidity on any market and offer a competitive spread in price to achieve an efficient market environment where traders can enter and exit at fair prices.</p>
+  <p>Account(s): Main account only.</p>
   <table>
   <thead>
   <tr>
@@ -984,8 +986,11 @@ html {
   <h3>
   <a id="user-content-stable-market-making-or-market-making-with-price-matching" class="anchor" name="stable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stable Market Making (or Market Making with Price Matching)</h3>
   <p>Script class symbol: <code>stable</code></p>
-  <p>Purpose: The <code>stable</code> script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.<br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base value and/or quote value. You can define the base value and the quote value to be set values, or use the market price that is reported by CoinGecko.<br>Warning: It can place taker orders to match the price to the index value. As a result, there are situations in which external orders can be actively filled. Please reach out if more information is necessary.<br>Use cases: provide liquidity and narrow spread on stablecoin markets or tokens that are pegged to a specific value.</p>
-  <p>Account(s): main account only.</p>
+  <p>Purpose: The <code>stable</code> script class provides liquidity to the market and narrows the market spread, while matching the price to a desired index.
+  <br>Details: It maintains a number of orders on both the buy and sell sides for a currency pair around a given price. Such a price is defined by the base value and/or quote value. You can define the base value and the quote value to be set values, or use the market price that is reported by CoinGecko.
+  <br>Warning: It can place taker orders to match the price to the index value. As a result, there are situations in which external orders can be actively filled. Please reach out if more information is necessary.
+  <br>Use cases: Provide liquidity and narrow spread on stablecoin markets or tokens that are pegged to a specific value.</p>
+  <p>Account(s): Main account only.</p>
   <table>
   <thead>
   <tr>
@@ -1136,8 +1141,11 @@ html {
   <h3>
   <a id="user-content-orderbook-replication" class="anchor" name="replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Orderbook Replication</h3>
   <p>Script class symbol: <code>replication</code></p>
-  <p>Purpose: The orderbook <code>replication</code> strategy replicates the liquidity from an exchange with more liquidity to an exchange with less liquidity, in order to provide liquidity on the exchange with less liquidity. This strategy makes profits from strictly hedging the risk.<br>Details: Whenever the orders maintained on the exchange with less liquidity are filled, it will hedge the position by placing market orders and take the liquidity from the  exchange with more liquidity.<br>Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.<br>Use cases: provide liquidity and narrow spread on major pairs on exchanges with little liquidity, pairs with little liquidity for a given token.</p>
-  <p>Account(s): both main account and secondary account. Main account is the account on the exchange on which liquidity will be added (the one with less liquidity), secondary account is the account on the exchange on which liquidity will be taken from (the one with more liquidity).</p>
+  <p>Purpose: The orderbook <code>replication</code> strategy replicates the liquidity from an exchange with more liquidity to an exchange with less liquidity, in order to provide liquidity on the exchange with less liquidity. This strategy makes profits from strictly hedging the risk.
+  <br>Details: Whenever the orders maintained on the exchange with less liquidity are filled, it will hedge the position by placing market orders and take the liquidity from the  exchange with more liquidity.
+  <br>Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.
+  <br>Use cases: Provide liquidity and narrow spread on major pairs on exchanges with little liquidity, pairs with little liquidity for a given token.</p>
+  <p>Account(s): Both main account and secondary account. Main account is the account on the exchange on which liquidity will be added (the one with less liquidity), secondary account is the account on the exchange on which liquidity will be taken from (the one with more liquidity).</p>
   <table>
   <thead>
   <tr>
@@ -1211,8 +1219,11 @@ html {
   </table>
   <h3>
   <a id="user-content-migrate" class="anchor" name="migrate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pool Liquidity Migration</h3>
-  <p>Purpose: The <code>migrate</code> strategy builds and maintains a dense tradeable orderbook on an exchange by taking liquidity provided by the community from a liquidity pool. This strategy makes profits from strictly hedging the risk.<br>Details: Whenever the orders maintained on the exchange are filled, it will hedge the position by swapping and thus taking liquidity from liquidity pool.<br>Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.<br>Use cases: build and maintain a tradeable orderbook on an exchange while fully hedging the risk against a liquidity pool and realizing profits.</p>
-  <p>Account(s): both main account and swap wallet. Main account is the account on the exchange on which liquidity will be added (orderbook will be built), swap wallet is the wallet connected to the liquidity pool. The swap account first needs to follow the instructions on the liquidity pool to approve swaping for the desired pair.</p>
+  <p>Purpose: The <code>migrate</code> strategy builds and maintains a dense tradeable orderbook on an exchange by taking liquidity provided by the community from a liquidity pool. This strategy makes profits from strictly hedging the risk.
+  <br>Details: Whenever the orders maintained on the exchange are filled, it will hedge the position by swapping and thus taking liquidity from liquidity pool.
+  <br>Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.
+  <br>Use cases: Build and maintain a tradeable orderbook on an exchange while fully hedging the risk against a liquidity pool and realizing profits.</p>
+  <p>Account(s): Both main account and swap wallet. Main account is the account on the exchange on which liquidity will be added (orderbook will be built), swap wallet is the wallet connected to the liquidity pool. The swap account first needs to follow the instructions on the liquidity pool to approve swaping for the desired pair.</p>
   <table>
   <thead>
   <tr>
@@ -1238,7 +1249,7 @@ html {
   <td>route</td>
   <td>A comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. If the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route</td>
   <td>
-  Sequence of <code>str</code> separated by <code>,</code>. Input <code>eth</code> if ETH is a base or quote. If ETH is found along the route, input WETH address instead</td>
+  Sequence of <code>str</code> separated by <code>,</code>. Input <code>eth</code> if ETH is a base or quote. If ETH is found along the route, input the WETH address instead</td>
   </tr>
   <tr>
   <td>minSwapVolume</td>
@@ -1297,9 +1308,9 @@ html {
   <p>Script class symbol: <code>arbitrage</code></p>
   <p>Purpose: For a given base currency, the <code>arbitrage</code> strategy can do same exchange cross pair arbitrage, cross exchange same pair arbitrage and cross exchange cross pair arbitrage.
   <br>Details: The script will look for all arbitrage opportunities for a given base currency. If only a main account is specified, the script will only look for cross pair arbitrage opportunities on the exchange of the account. However, if both a main and a secondary accounts are specified, the script will look for all combinations of arbitrage opportunities (i.e. cross pairs on the main account exchange, cross pairs on the secondary account exchange, same pair and cross pairs accross both exchanges). Arbitrage opportunities are defined by the threshold parameter.
-  <br>Warning: for cross exchange arbitrage (whether same pair or cross pair), rebalance will be needed at times between main and secondary accounts. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below).
-  <br>Use cases: Generate profits from price discrepancies between pairs for a given currency. Works very well in combination with <code>maker</code> to effectively reduce price discrepancies between pairs for a given currency, especially major pairs on small exchanges that want to reduce adverse arbitrage opportunities and pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.</p>
-  <p>Account(s): main account only for same exchange cross pair arbitrage; main account and secondary account for both same exchange and cross exchange arbitrage (whether same pair or cross pair).</p>
+  <br>Warning: For cross exchange arbitrage (whether same pair or cross pair), rebalance will be needed at times between the main and secondary accounts. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below).
+  <br>Use cases: Generate profits from price discrepancies between pairs for a given base currency. Works very well in combination with <code>maker</code> to effectively reduce price discrepancies between pairs for a given currency, especially major pairs on small exchanges that want to reduce adverse arbitrage opportunities and pairs with price dicrepancies for a given token in order to reduce adverse arbitrage opportunities.</p>
+  <p>Account(s): Main account only for same exchange cross pair arbitrage; main account and secondary account for both same exchange and cross exchange arbitrage (whether same pair or cross pair).</p>
   <table>
   <thead>
   <tr>
@@ -1323,7 +1334,7 @@ html {
   </tr>
   <tr>
   <td>threshold</td>
-  <td>The minimum price difference for arbitrage in order to make profits. The threshold has to cover the trading fees - for arbitrage across the same pair (on different exchanges): the trading fee will be twice the taker fees; for cross pair arbitrage (either on the same exchange or on different exchanges), the trading fee will be three times the taker fees - and withdrawal fees combined</td>
+  <td>The minimum price difference for arbitrage to make profits. The threshold has to cover the trading fees - for arbitrage across the same pair (on different exchanges): the trading fee will be twice the taker fees; for cross pair arbitrage (either on the same exchange or on different exchanges), the trading fee will be three times the taker fees - and withdrawal fees combined</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
@@ -1355,10 +1366,69 @@ html {
   </tbody>
   </table>
   <h3>
+  <a id="user-content-swaparb" class="anchor" name="swaparb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Liquidity Pool Arbitrage</h3>
+  <p>Purpose: For a given base currency, the <code>swaparb</code> strategy can do arbitrage between an exchange and a liquidity pool.
+  <br>Details: The script will look for all arbitrage opportunities for a given base currency. Arbitrage opportunities are defined by the threshold parameter.
+  <br>Warning: Rebalance will be needed at times between the main account and swap wallet. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below).
+  <br>Use cases: Generate profits from price discrepancies between pairs for a given base currency.</p>
+  <p>Account(s): Both main account and swap wallet. Main account is the account on the exchange that is not the liquidity pool, swap wallet is the wallet connected to the liquidity pool. The swap account first needs to follow the instructions on the liquidity pool to approve swaping for the desired pair.</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Parameters</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>base</td>
+  <td>Market symbol of the base currency on the exchange</td>
+  <td>
+  <code>str</code>, e.g. <code>token</code> for the market TOKEN/BTC</td>
+  </tr>
+  <tr>
+  <td>quote</td>
+  <td>Market symbol of the quote currency on the exchange</td>
+  <td>
+  <code>str</code>, e.g. <code>btc</code> for the market TOKEN/BTC</td>
+  </tr>
+  <tr>
+  <td>route</td>
+  <td>A comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. If the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route. The last asset in route has to be the same as the quote asset.</td>
+  <td>
+  Sequence of <code>str</code> separated by <code>,</code>. Input <code>eth</code> if ETH is a base or quote. If ETH is found along the route, input the WETH address instead</td>
+  </tr>
+  <tr>
+  <td>threshold</td>
+  <td>The minimum price difference for arbitrage to make profits. The threshold has to cover the trading fees - both taker fee and swap fee - and withdrawal fees combined</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>minSwapVolume</td>
+  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
+  <td>
+  <code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency. If the total base currency balance for either the exchange account or swap waller is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency. If the total quote currency balance for the exchange account is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td><code>float</code></td>
+  </tr>
+  </tbody>
+  </table>
+  <h3>
   <a id="user-content-market-entry-or-buy-back-or-accumulate" class="anchor" name="enter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Market Entry (or Buy-Back, or Accumulate)</h3>
   <p>Script class symbol: <code>enter</code></p>
-  <p>Purpose: The <code>enter</code> strategy is designed to efficiently purchase a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.<br>Details: The user specifies a certain price threshold and the script will purchase as much as possible at or under that threshold.<br>Use cases: efficiently accumulate tokens at the lowest price possible, build a price support (that can be moved up gradually).</p>
-  <p>Account(s): main account only.</p>
+  <p>Purpose: The <code>enter</code> strategy is designed to efficiently purchase a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.<br>Details: The user specifies a certain price threshold and the script will purchase as much as possible at or under that threshold.
+  <br>Use cases: Efficiently accumulate tokens at the lowest price possible, build a price support (that can be moved up gradually).</p>
+  <p>Account(s): Main account only.</p>
   <table>
   <thead>
   <tr>
@@ -1437,8 +1507,10 @@ html {
   <h3>
   <a id="user-content-market-exit-or-sell-off-or-liquidate" class="anchor" name="exit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Market Exit (or Sell-Off, or Liquidate)</h3>
   <p>Script class symbol: <code>exit</code></p>
-  <p>Purpose: The <code>exit</code> strategy is designed to efficiently sell a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.<br>Details: The user specifies a certain price threshold and the script will sell as much as possible at or above that threshold.<br>Use cases: efficiently liquidate tokens at the highest price possible.</p>
-  <p>Account(s): main account only.</p>
+  <p>Purpose: The <code>exit</code> strategy is designed to efficiently sell a large amount of tokens on the secondary market without influencing the price and suffering from a large slippage.
+  <br>Details: The user specifies a certain price threshold and the script will sell as much as possible at or above that threshold.
+  <br>Use cases: Efficiently liquidate tokens at the highest price possible.</p>
+  <p>Account(s): Main account only.</p>
   <table>
   <thead>
   <tr>
@@ -1537,8 +1609,10 @@ html {
 <!--   <h3>
   <a id="user-content-askflip" class="anchor" name="askflip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ask Flipping (PDMM initiated by market exit)</h3>
   <p>Script class symbol: <code>askflip</code></p>
-  <p>Purpose: The <code>askflip</code> strategy is designed to buy and sell for profits, with the possibility to sell more than what is being bought.<br>Details: The script will place one ask first. Once this ask is being filled, a bid is placed (either of the same quantity or lower) at a profitable price level and the cycle repeats (the bid can be standing, waiting to be filled).<br>Use cases: profit driven market making by flipping orders. The script starts by exiting the market first so situations with base currency and no quote are very suitable. It supports the market on the way up (only 1 ask at a time) and potentially several bids on the way down (at profitable levels). It can also act as a slow liquidation mechanism if the bid quantity is set to be a fraction of the ask quantity.</p>
-  <p>Account(s): main account only.</p>
+  <p>Purpose: The <code>askflip</code> strategy is designed to buy and sell for profits, with the possibility to sell more than what is being bought.
+  <br>Details: The script will place one ask first. Once this ask is being filled, a bid is placed (either of the same quantity or lower) at a profitable price level and the cycle repeats (the bid can be standing, waiting to be filled).
+  <br>Use cases: Profit driven market making by flipping orders. The script starts by exiting the market first so situations with base currency and no quote are very suitable. It supports the market on the way up (only 1 ask at a time) and potentially several bids on the way down (at profitable levels). It can also act as a slow liquidation mechanism if the bid quantity is set to be a fraction of the ask quantity.</p>
+  <p>Account(s): Main account only.</p>
   <table>
   <thead>
   <tr>
@@ -1613,8 +1687,10 @@ html {
   <h3>
   <a id="user-content-scheduled-orders" class="anchor" name="schedule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scheduled Orders</h3>
   <p>Script class symbol: <code>schedule</code></p>
-  <p>Purpose: <code>schedule</code> recursive orders over time, spaced out by a given time interval.<br>Details: Every time it places a buy order, it will use the account that has more quote currency; everytime it places a sell order, it will use the account that has less quote currency.<br>Use cases: customize a trading strategy without any coding background.</p>
-  <p>Account(s): main account, secondary account is optional.</p>
+  <p>Purpose: <code>schedule</code> recursive orders over time, spaced out by a given time interval.
+  <br>Details: Every time it places a buy order, it will use the account that has more quote currency; everytime it places a sell order, it will use the account that has less quote currency.
+  <br>Use cases: Customize a trading strategy without any coding background.</p>
+  <p>Account(s): Main account, secondary account is optional.</p>
   <table>
   <thead>
   <tr>
@@ -1717,7 +1793,7 @@ html {
   <h3>
   <a id="user-content-classes" class="anchor" name="classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h3>
   <p>A script class is the strategy that a script uses. There are public script classes that are available for all users, and there are also customized script classes that are defined by each individual user.</p>
-  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a><!-- , <a href="#askflip">askflip</a> --> and <a href="#schedule">schedule</a>.</p>
+  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#arbitrage">arbitrage</a>, <a href="#swaparb">swaparb</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a><!-- , <a href="#askflip">askflip</a> --> and <a href="#schedule">schedule</a>.</p>
   <h2>
   <a id="user-content-htclient-user-interface" class="anchor" name="htclient-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient User Interface</h2>
   <h3>
@@ -2318,6 +2394,7 @@ html {
         <li><a href="#replication">Orderbook Replication</a></li>
         <li><a href="#migrate">Pool Liquidity Migration</a></li>
         <li><a href="#arbitrage">Arbitrage</a></li>
+        <li><a href="#swaparb">Liquidity Pool Arbitrage</a></li>
         <li><a href="#enter">Market Entry</a></li>
         <li><a href="#exit">Market Exit</a></li>
         <!-- <li><a href="#askflip">Ask Flipping</a></li> -->
@@ -2401,7 +2478,7 @@ function toggle() {
 }
 
 function toggle_strategy_catalog() {
-  document.getElementById("strategy-catalog-content").style.height = "240px"
+  document.getElementById("strategy-catalog-content").style.height = "270px"
   document.getElementById("strategy-catalog-content").style.display = "block"
   document.getElementById("customized-scripts-content").style.height = "0"
   document.getElementById("customized-scripts-content").style.display = "none"
