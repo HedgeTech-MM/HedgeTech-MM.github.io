@@ -1401,13 +1401,13 @@ html {
   </tr>
   <tr>
   <td>threshold</td>
-  <td>The minimum price difference for arbitrage to make profits. The threshold has to cover the trading fees - both taker fee and swap fee - and withdrawal fees combined</td>
+  <td>The minimum price difference for arbitrage to make profits. The threshold has to cover the trading fees - both taker fee and swap fee and liquidity providers fees on all pools along the route - and withdrawal fees combined</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
   <tr>
   <td>minSwapVolume</td>
-  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
+  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees and liquidity providers fees on all pools along the route.</td>
   <td>
   <code>float</code></td>
   </tr>
@@ -1419,6 +1419,58 @@ html {
   <tr>
   <td>stopConditionQuote (Optional)</td>
   <td>The stop condition for quote currency. If the total quote currency balance for the exchange account is lower than the threshold, the script will pause and orders will be cancelled</td>
+  <td><code>float</code></td>
+  </tr>
+  </tbody>
+  </table>
+  <h3>
+  <a id="user-content-poolsarb" class="anchor" name="poolsarb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pools Arbitrage</h3>
+  <p>Purpose: For a given base currency, the <code>poolsarb</code> strategy can do arbitrage between liquidity pools.
+  <br>Details: The script will look for all arbitrage opportunities for a given base currency. Arbitrage opportunities are defined by the threshold parameter.
+  <br>Warning: Rebalance will be needed at times between the main wallet and secondary wallet. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below).
+  <br>Use cases: Generate profits from price discrepancies between pools for a given base currency.</p>
+  <p>Account(s): Both main wallet and secondary wallet. Wallets first need to follow the instructions on the liquidity pools to approve swaping for the desired pairs.</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Parameters</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>routeMain</td>
+  <td>A comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. On Uniswap, if the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route. On Pancakeswap, if the base or quote asset is BNB, input <code>bnb</code> as either the begining or the end of the route. The destination currencies on both routes have to have the same value in USD (e.g. stablecoin on both)</td>
+  <td>
+  Sequence of <code>str</code> separated by <code>,</code>. On Uniswap: if ETH is a base or quote, input <code>eth</code>; if ETH is found along the route, input the WETH address instead. On Pancakeswap: if BNB is a base or quote, input <code>bnb</code>; if BNB is found along the route, input the WBNB address instead</td>
+  </tr>
+  <tr>
+  <td>routeSecondary</td>
+  <td>A comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. On Uniswap, if the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route. On Pancakeswap, if the base or quote asset is BNB, input <code>bnb</code> as either the begining or the end of the route. The destination currencies on both routes have to have the same value in USD (e.g. stablecoin on both)</td>
+  <td>
+  Sequence of <code>str</code> separated by <code>,</code>. On Uniswap: if ETH is a base or quote, input <code>eth</code>; if ETH is found along the route, input the WETH address instead. On Pancakeswap: if BNB is a base or quote, input <code>bnb</code>; if BNB is found along the route, input the WBNB address instead</td>
+  </tr>
+  <tr>
+  <td>threshold</td>
+  <td>The minimum price difference for arbitrage to make profits. The threshold has to cover the trading fees - both swap fees and liquidity providers fees on all pools along both routes - and withdrawal fees combined</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>minSwapVolume</td>
+  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (networks) fees and liquidity provider fees on all pools along both routes.</td>
+  <td>
+  <code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionBase (Optional)</td>
+  <td>The stop condition for base currency. If the total base currency balance for either wallets is lower than the threshold, the script will pause</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionQuote (Optional)</td>
+  <td>The stop condition for quote currency. If the total quote currency balance for either wallets is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
@@ -1886,7 +1938,7 @@ html {
   <h3>
   <a id="user-content-classes" class="anchor" name="classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h3>
   <p>A script class is the strategy that a script uses. There are public script classes that are available for all users, and there are also customized script classes that are defined by each individual user.</p>
-  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#arbitrage">arbitrage</a>, <a href="#swaparb">swaparb</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a>, <a href="#smart-swap">smartswap</a><!-- , <a href="#askflip">askflip</a> --> and <a href="#schedule">schedule</a>.</p>
+  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#arbitrage">arbitrage</a>, <a href="#swaparb">swaparb</a>, <a href="#poolsarb">poolsarb</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a>, <a href="#smart-swap">smartswap</a><!-- , <a href="#askflip">askflip</a> --> and <a href="#schedule">schedule</a>.</p>
   <h2>
   <a id="user-content-htclient-user-interface" class="anchor" name="htclient-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient User Interface</h2>
   <h3>
@@ -2488,6 +2540,7 @@ html {
         <li><a href="#migrate">Pool Liquidity Migration</a></li>
         <li><a href="#arbitrage">Arbitrage</a></li>
         <li><a href="#swaparb">Liquidity Pool Arbitrage</a></li>
+        <li><a href="#poolsarb">Pools Arbitrage</a></li>
         <li><a href="#enter">Market Entry</a></li>
         <li><a href="#exit">Market Exit</a></li>
         <li><a href="#smart-swap">Smart Swap</a></li>
@@ -2572,7 +2625,7 @@ function toggle() {
 }
 
 function toggle_strategy_catalog() {
-  document.getElementById("strategy-catalog-content").style.height = "300px"
+  document.getElementById("strategy-catalog-content").style.height = "330px"
   document.getElementById("strategy-catalog-content").style.display = "block"
   document.getElementById("customized-scripts-content").style.height = "0"
   document.getElementById("customized-scripts-content").style.display = "none"
