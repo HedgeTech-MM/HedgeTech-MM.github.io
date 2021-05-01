@@ -1253,7 +1253,7 @@ html {
   </tr>
   <tr>
   <td>minSwapVolume</td>
-  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
+  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
   <td>
   <code>float</code></td>
   </tr>
@@ -1407,7 +1407,7 @@ html {
   </tr>
   <tr>
   <td>minSwapVolume</td>
-  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees and liquidity providers fees on all pools along the route.</td>
+  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees and liquidity providers fees on all pools along the route.</td>
   <td>
   <code>float</code></td>
   </tr>
@@ -1459,18 +1459,30 @@ html {
   </tr>
   <tr>
   <td>minSwapVolume</td>
-  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (networks) fees and liquidity provider fees on all pools along both routes.</td>
+  <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (networks) fees and liquidity provider fees on all pools along both routes.</td>
+  <td>
+  <code>float</code></td>
+  </tr>
+  <tr>
+  <td>tolerance (Optional)</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is the same as threshold.</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>maxSwapVolume (Optional)</td>
+  <td>Maximum volume in base currency per swap transaction on the liquidity pool</td>
   <td>
   <code>float</code></td>
   </tr>
   <tr>
   <td>stopConditionBase (Optional)</td>
-  <td>The stop condition for base currency. If the total base currency balance for either wallets is lower than the threshold, the script will pause</td>
+  <td>The stop condition for base (input) currency. If the total base currency balance for either wallets is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   <tr>
   <td>stopConditionQuote (Optional)</td>
-  <td>The stop condition for quote currency. If the total quote currency balance for either wallets is lower than the threshold, the script will pause</td>
+  <td>The stop condition for quote (output) currency. If the total quote currency balance for either wallets is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
@@ -1727,7 +1739,7 @@ html {
   </tr>
   <tr>
   <td>minSwapVolume (Optional)</td>
-  <td>Minimum volume in input token per swap transaction. It is advised to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
+  <td>Minimum volume in input token per swap transaction. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
   <td><code>float</code></td>
   </tr>
   <tr>
@@ -1738,7 +1750,7 @@ html {
   </td>
   </tr>
   <tr>
-  <td>stopCondition (Optional)</td>
+  <td>stopConditionBase (Optional)</td>
   <td>If the balance in input token is lower than the <code>stopCondition</code>, the script will pause</td>
   <td><code>float</code></td>
   </tr>
