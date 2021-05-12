@@ -1292,6 +1292,12 @@ html {
   <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomnesss</td>
   </tr>
   <tr>
+  <td>tolerance (Optional)</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is the same as threshold.</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
   <td>stopConditionBase (Optional)</td>
   <td>The stop condition for base currency. If the total base currency balance for either the exchange account or swap waller is lower than the threshold, the script will pause and orders will be cancelled</td>
   <td><code>float</code></td>
