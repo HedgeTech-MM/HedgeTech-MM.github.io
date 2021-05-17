@@ -1251,11 +1251,17 @@ html {
   <td>
   Sequence of <code>str</code> separated by <code>,</code>. On Uniswap: if ETH is a base or quote, input <code>eth</code>; if ETH is found along the route, input the WETH address instead. On Pancakeswap: if BNB is a base or quote, input <code>bnb</code>; if BNB is found along the route, input the WBNB address instead</td>
   </tr>
-  <tr>
+<!--   <tr>
   <td>minSwapVolume</td>
   <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
   <td>
   <code>float</code></td>
+  </tr> -->
+  <tr>
+  <td>maxGasPrice</td>
+  <td>Maximum gas amount per swap in GWEI. If the gas price exeeds this amount, the script will pause</td>
+  <td>
+  <code>float</code> or <code>int</code></td>
   </tr>
   <tr>
   <td>divergence</td>
@@ -1293,7 +1299,7 @@ html {
   </tr>
   <tr>
   <td>tolerance (Optional)</td>
-  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is the same as threshold.</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is one half of divergence.</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
@@ -1411,11 +1417,23 @@ html {
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
-  <tr>
+<!--   <tr>
   <td>minSwapVolume</td>
   <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees and liquidity providers fees on all pools along the route.</td>
   <td>
   <code>float</code></td>
+  </tr> -->
+  <tr>
+  <td>maxGasPrice</td>
+  <td>Maximum gas amount per swap in GWEI. If the gas price exeeds this amount, the script will pause</td>
+  <td>
+  <code>float</code> or <code>int</code></td>
+  </tr>
+  <tr>
+  <td>tolerance (Optional)</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is one half of threshold.</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
   <tr>
   <td>stopConditionBase (Optional)</td>
@@ -1463,15 +1481,21 @@ html {
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
-  <tr>
+  <!-- <tr>
   <td>minSwapVolume</td>
   <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (networks) fees and liquidity provider fees on all pools along both routes.</td>
   <td>
   <code>float</code></td>
+  </tr> -->
+  <tr>
+  <td>maxGasPrice</td>
+  <td>Maximum gas amount per swap in GWEI. If the gas price exeeds this amount, the script will pause</td>
+  <td>
+  <code>float</code> or <code>int</code></td>
   </tr>
   <tr>
   <td>tolerance (Optional)</td>
-  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is the same as threshold.</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is one third of threshold.</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
