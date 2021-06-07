@@ -952,13 +952,13 @@ html {
   </tr>
   <tr>
   <td>initPriority (Optional)</td>
-  <td>The order of in which different elements are taken into consideration to determine the initiation price. Can be any combination of the following elements: gecko (for CoinGecko price if available), last (for last traded price), mid (for mid price between ask1 and bid1), manual (for manually entered price). Seperated by comma, from the first element to be considered to the last</td>
-  <td><code>str</code>, can be any combination of the following elements: <code>gecko</code> (for CoinGecko price if available), <code>last</code> (for last traded price), <code>mid</code> (for mid price between ask1 and bid1), <code>manual</code> (for manually entered price). </td>
+  <td>The order of in which different elements are taken into consideration to determine the initiation price. Can be any combination of the following elements: gecko (for CoinGecko price if available), last (for last traded price), mid (for mid price between ask1 and bid1), manual (for manually entered price). Seperated by comma, from the first element to be considered to the last. Default is gecko,last,mid.</td>
+  <td><code>str</code>, can be any combination of the following elements: <code>gecko</code> (for CoinGecko price if available), <code>last</code> (for last traded price), <code>mid</code> (for mid price between ask1 and bid1), <code>manual</code> (for manually entered price)</td>
   </tr>
   <tr>
   <td>initFillPrevention (Optional)</td>
-  <td>Turn on to prevent the first order to be placed when initiating to fill an external order on the orderbook</td>
-  <td><code>bool</code>, default value <code>False</code>, input <code>True</code> to turn it on</td>
+  <td>Turn on to prevent the first order to be placed when initiating to fill an external order on the orderbook. Default is False</td>
+  <td><code>bool</code>, input <code>True</code> to turn it on</td>
   </tr>
   <tr>
   <td>baseName (Optional)</td>
@@ -1064,6 +1064,11 @@ html {
   <td>quoteName (Optional)</td>
   <td>Full name of the quote currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive</td>
   <td><code>str</code></td>
+  </tr>
+  <tr>
+  <td>preventTaker (Optional)</td>
+  <td>Turn on to prevent filling external orders on the orderbook while attempting to match price to index value. Default is False</td>
+  <td><code>bool</code>, input <code>True</code> to turn it on</td>
   </tr>
   <tr>
   <td>stopConditionBase (Optional)</td>
@@ -1299,9 +1304,21 @@ html {
   </tr>
   <tr>
   <td>tolerance (Optional)</td>
-  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is one half of divergence.</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is half of divergence</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>exchangeFeeRate (Optional)</td>
+  <td>Maker fee on the exchange (main account). Default is 0.2%</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>gasMultiplier (Optional)</td>
+  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>
+  <code>float</code>, e.g. <code>2</code> means twice</td>
   </tr>
   <tr>
   <td>stopConditionBase (Optional)</td>
@@ -1431,7 +1448,7 @@ html {
   </tr>
   <tr>
   <td>tolerance (Optional)</td>
-  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is one half of threshold.</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example).Default is one half of threshold.</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
@@ -1778,6 +1795,18 @@ html {
   </td>
   <td>Sequence of <code>apiExpression</code> separated by <code>,</code>, see <a href="#api-expression">API Expression</a>
   </td>
+  </tr>
+  <tr>
+  <td>tolerance (Optional)</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is one third of threshold.</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>maxGasPrice (Optional)</td>
+  <td>Maximum gas price in GWEI. If the gas price exeeds this amount, the script will pause</td>
+  <td>
+  <code>float</code> or <code>int</code></td>
   </tr>
   <tr>
   <td>stopConditionBase (Optional)</td>
