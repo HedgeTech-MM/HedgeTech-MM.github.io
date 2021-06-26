@@ -1463,6 +1463,18 @@ html {
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
   <tr>
+  <td>exchangeFeeRate (Optional)</td>
+  <td>Maker fee on the exchange (main account). Default is 0.2%</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>gasMultiplier (Optional)</td>
+  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>
+  <code>float</code>, e.g. <code>2</code> means twice</td>
+  </tr>
+  <tr>
   <td>stopConditionBase (Optional)</td>
   <td>The stop condition for base currency. If the total base currency balance for either the exchange account or swap waller is lower than the threshold, the script will pause and orders will be cancelled</td>
   <td><code>float</code></td>
