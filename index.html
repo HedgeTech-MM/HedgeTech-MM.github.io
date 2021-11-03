@@ -1266,6 +1266,18 @@ html {
   <td>
   Sequence of <code>str</code> separated by <code>,</code>. On Uniswap: if ETH is a base or quote, input <code>eth</code>; if ETH is found along the route, input the WETH address instead. On Pancakeswap: if BNB is a base or quote, input <code>bnb</code>; if BNB is found along the route, input the WBNB address instead</td>
   </tr>
+  <tr>
+  <td>tickSize</td>
+  <td>The distance between orders placed within the same side of the order book</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.002</code> means 0.2%</td>
+  </tr>
+  <tr>
+  <td>divergenceMultiplier</td>
+  <td>Integer multiplier of tickSize to set divergence. Divergence is the price distance between the orders placed on the exchange and the corresponding price levels on the liquidity pool. The larger divergence is, the higher the maintained spread (spread will be (1 + 2 x divergenceMultiplier) x tickSize) and the lower the maintained order density will be on the exchange. However density has to be large enough to cover the trading fees on the exchange, the swap (network) fees as well as transfer fees between the liquidity pool and the exchange. </td>
+  <td>
+  <code>int</code></td>
+  </tr>
 <!--   <tr>
   <td>minSwapVolume</td>
   <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
@@ -1278,12 +1290,12 @@ html {
   <td>
   <code>float</code> or <code>int</code></td>
   </tr>
-  <tr>
+<!--   <tr>
   <td>divergence</td>
   <td>The price distance between the orders placed on the exchange. The larger divergence is, the higher the maintained spread (spread will be 3 x divergence) and the lower the maintained order density will be on the exchange. However density has to be large enough to cover the trading fees on the exchange, the swap (network) fees as well as transfer fees between the liquidity pool and the exchange. </td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
-  </tr>
+  </tr> -->
   <tr>
   <td>percentUpper</td>
   <td>The highest percentage of liquidity to be migrated from the liquidity pool to the exchange. If the liquidity between price levels on the liquidity pool exceeds the volume of orders on the exchange by that percentage, resize the orders on the exchange</td>
@@ -1772,8 +1784,8 @@ html {
   <td><code>int</code></td>
   </tr>
   <tr>
-  <td>randomness</td>
-  <td>Desired degree of randomness of <code>aveFreq</code> and <code>aveAmount</code>
+  <td>randomness (Optional)</td>
+  <td>Desired degree of randomness of <code>aveFreq</code> and <code>aveAmount</code>. Default is 0.
   </td>
   <td>
   <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomness</td>
@@ -1922,6 +1934,87 @@ html {
     <span class="pl-s"><span class="pl-pds">"</span>key2<span class="pl-pds">"</span></span>: <span class="pl-c1">10</span>
   }</pre></div>
   <p>The <code>keyChain</code> should be an <code>array</code> of keys that leads to the value to be resolved. If the value to be resolved is <code>3</code>, the <code>keyChain</code> should be <code>["key1", "key12", 1]</code>. If the value to be resolved is <code>10</code>, the <code>keyChain</code> should be <code>["key2"]</code>. Note that the index of an <code>array</code> starts from <code>0</code>.</p>
+  <h3><a id="user-content-smart-swap-v3" class="anchor" name="smart-swap-v3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Smart Swap V3</h3>
+  <p>Script class symbol: <code>smartswap-v3</code></p>
+  <p>Purpose: <code>smartswap-v3</code> allows to scan liquidity within a certain range of market price at a given frequency and to take part of that liquidity.
+  <br>Warning: This is a relatively advanced script class, please reach out if more information is necessary before implementing it.</br></p>
+  <p>Account(s): swap wallet. Swap wallet is the wallet connected to the liquidity pool. The swap account first needs to follow the instructions on the liquidity pool to approve swaping for the desired pair.</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Parameters</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>route</td>
+  <td>A comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. On Uniswap, if the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route. On Pancakeswap, if the base or quote asset is BNB, input <code>bnb</code> as either the begining or the end of the route. The route needs to include the fee tier corresponding to a pool in between the addresses of the two token constituting the pool</td>
+  <td>
+  Sequence of <code>str</code> and <code>float</code> separated by <code>,</code>. On Uniswap: if ETH is a base or quote, input <code>eth</code>; if ETH is found along the route, input the WETH address instead. On Pancakeswap: if BNB is a base or quote, input <code>bnb</code>; if BNB is found along the route, input the WBNB address instead</td>
+  </tr>
+  <tr>
+  <td>aveFreq</td>
+  <td>The average sleep time in seconds between two swaps</td>
+  <td><code>int</code></td>
+  </tr>
+  <tr>
+  <td>minPrice</td>
+  <td>Minimum swap price (price of the first token in the route quoted against the last token in the route)</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>scanRange</td>
+  <td>The range in percent from market price to scan liquidity</td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>threshold</td>
+  <td> If the liquidity in the first token in the route is greater than this threshold, initiate swap</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>percent</td>
+  <td> Percent of liquidity to take wihin scanRange</td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>tolerance (Optional)</td>
+  <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is 0.0005.</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>randomness (Optional)</td>
+  <td>Desired degree of randomness of <code>aveFreq</code> and <code>percent</code>
+  </td>
+  <td>
+  <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomness</td>
+  </tr>
+  <tr>
+  <td>maxGasPrice (Optional)</td>
+  <td>Maximum gas price in GWEI. If the gas price exeeds this amount, the script will pause</td>
+  <td>
+  <code>float</code> or <code>int</code></td>
+  </tr>
+  <tr>
+  <td>maxSwapVolume (Optional)</td>
+  <td>Maximum volume in input token per swap transaction</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>minSwapVolume (Optional)</td>
+  <td>Minimum volume in input token per swap transaction. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (network) fees.</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionBase (Optional)</td>
+  <td>If the balance in input token is lower than the <code>stopCondition</code>, the script will pause</td>
+  <td><code>float</code></td>
+  </tr>
+  </tbody>
+  </table>
   <h3>
   <a id="user-content-scheduled-orders" class="anchor" name="schedule" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scheduled Orders</h3>
   <p>Script class symbol: <code>schedule</code></p>
@@ -2031,7 +2124,7 @@ html {
   <h3>
   <a id="user-content-classes" class="anchor" name="classes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes</h3>
   <p>A script class is the strategy that a script uses. There are public script classes that are available for all users, and there are also customized script classes that are defined by each individual user.</p>
-  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#arbitrage">arbitrage</a>, <a href="#swaparb">swaparb</a>, <a href="#poolsarb">poolsarb</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a>, <a href="#smart-swap">smartswap</a><!-- , <a href="#askflip">askflip</a> --> and <a href="#schedule">schedule</a>.</p>
+  <p>The public script classes are: <a href="#maker">maker</a>, <a href="#stable">stable</a>, <a href="#replication">replication</a>, <a href="#migrate">migrate</a>, <a href="#arbitrage">arbitrage</a>, <a href="#swaparb">swaparb</a>, <a href="#poolsarb">poolsarb</a>, <a href="#enter">enter</a>, <a href="#exit">exit</a>, <a href="#smart-swap">smartswap</a>, <a href="#smart-swap-v3">smartswap-v3</a><!-- , <a href="#askflip">askflip</a> --> and <a href="#schedule">schedule</a>.</p>
   <h2>
   <a id="user-content-htclient-user-interface" class="anchor" name="htclient-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTClient User Interface</h2>
   <h3>
@@ -2637,6 +2730,7 @@ html {
         <li><a href="#enter">Market Entry</a></li>
         <li><a href="#exit">Market Exit</a></li>
         <li><a href="#smart-swap">Smart Swap</a></li>
+        <li><a href="#smart-swap-v3">Smart Swap V3</a></li>
         <!-- <li><a href="#askflip">Ask Flipping</a></li> -->
         <li><a href="#schedule">Scheduled Orders</a></li>
       </ul>
@@ -2718,7 +2812,7 @@ function toggle() {
 }
 
 function toggle_strategy_catalog() {
-  document.getElementById("strategy-catalog-content").style.height = "330px"
+  document.getElementById("strategy-catalog-content").style.height = "360px"
   document.getElementById("strategy-catalog-content").style.display = "block"
   document.getElementById("customized-scripts-content").style.height = "0"
   document.getElementById("customized-scripts-content").style.display = "none"
