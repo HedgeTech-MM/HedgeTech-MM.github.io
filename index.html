@@ -1320,15 +1320,27 @@ html {
   </tr>
   <tr>
   <td>randomness</td>
-  <td>When the order amount exceeds the <code>volumeCap</code> for a given order, instead of placing an order exactly at the <code>volumeCap</code>, it will place an order around <code>volumeCap</code> with a degree of randomness.</td>
+  <td>When the order amount exceeds the <code>volumeCap</code> for a given order, instead of placing an order exactly at the <code>volumeCap</code>, it will place an order around <code>volumeCap</code> with a degree of randomness</td>
   <td>
   <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomnesss</td>
+  </tr>
+  <tr>
+  <td>swapTimeOut (Optional)</td>
+  <td>A swap will revert if the number of seconds specified has elapsed without confirmation. The recommended value for non ethereum based liquidity pools is 180 to 300. Default is 1200</td>
+  <td>
+  <code>int</code>, e.g. 300 will make the swap retry after 5 minutes</td>
   </tr>
   <tr>
   <td>tolerance (Optional)</td>
   <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is half of divergence</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>forceSettle (Optional)</td>
+  <td>If True and swap cannot settle opened position at a profit (due to price change during confirmation for example), instead of waiting for an oppotunity to settle for profit, it will force settling the position immediately (attention: may result in losses). Default is False</td>
+  <td>
+  <code>bool</code></td>
   </tr>
   <tr>
   <td>exchangeFeeRate (Optional)</td>
@@ -1338,6 +1350,48 @@ html {
   </tr>
   <tr>
   <td>gasMultiplier (Optional)</td>
+  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>
+  <code>float</code>, e.g. <code>2</code> means twice</td>
+  </tr>
+  <tr>
+  <td>nativeToTokenRoute (Optional)</td>
+  <td>A comma separated sequence of token addresses from wrapped native token to base asset. The route can be found on the liquidity pool's user interface. On Uniswap, must start with <code>eth</code> as the begining of the nativeToTokenRoute. On Pancakeswap, must start with <code>bnb</code> as the begining of the nativeToTokenRoute</td>
+  <td>
+  Sequence of <code>str</code> separated by <code>,</code></td>
+  </tr>
+  <tr>
+  <td>avoidSwing (Optional)</td>
+  <td>Whether to turn on the price swing protection mechanism. Default is False</td>
+  <td>
+  <code>bool</code></td>
+  </tr>
+  <tr>
+  <td>avoidSwingN (Optional)</td>
+  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>
+  <code>float</code>, e.g. <code>2</code> means twice</td>
+  </tr>
+  <tr>
+  <td>avoidSwingMinN (Optional)</td>
+  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>
+  <code>float</code>, e.g. <code>2</code> means twice</td>
+  </tr>
+  <tr>
+  <td>avoidSwingFreq (Optional)</td>
+  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>
+  <code>float</code>, e.g. <code>2</code> means twice</td>
+  </tr>
+  <tr>
+  <td>avoidSwingRidOutlier (Optional)</td>
+  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>
+  <code>float</code>, e.g. <code>2</code> means twice</td>
+  </tr>
+  <tr>
+  <td>avoidSwingStdDevMulti (Optional)</td>
   <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
   <td>
   <code>float</code>, e.g. <code>2</code> means twice</td>
@@ -1624,13 +1678,13 @@ html {
   </tr>
   <tr>
   <td>movingAverageN (Optional)</td>
-  <td>The number of periods when calculating price moving average. Needs to be specified in combination with movingAverageFreq. If the price is higher than the moving average, the script will pause</td>
-  <td><code>int</code>, e.g. 10 will calculate the 10 movingAverageFreq price moving average</td>
+  <td>The number of periods when calculating price moving average. Needs to be specified in combination with <code>movingAverageFreq</code>. If the price is higher than the moving average, the script will pause</td>
+  <td><code>int</code>, e.g. 10 will calculate the 10 <code>movingAverageFreq</code> price moving average</td>
   </tr>
   <tr>
   <td>movingAverageFreq (Optional)</td>
-  <td>The number of seconds in each period when calculating price moving average. Needs to be specified in combination with movingAverageN. If the price is higher than the moving average, the script will pause</td>
-  <td><code>int</code>, e.g. 300 will calculate the 5 minutes movingAverageN price moving average</td>
+  <td>The number of seconds in each period when calculating price moving average. Needs to be specified in combination with <code>movingAverageN</code>. If the price is higher than the moving average, the script will pause</td>
+  <td><code>int</code>, e.g. 300 will calculate the 5 minutes <code>movingAverageN</code> price moving average</td>
   </tr>
   <tr>
   <td>dustValue (Optional)</td>
