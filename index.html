@@ -1705,6 +1705,16 @@ html {
   <code>float</code>, between 0 and 1: 0 is no randomess; 1 is maximum randomness</td>
   </tr>
   <tr>
+  <td>movingAverageN (Optional)</td>
+  <td>The number of periods when calculating price moving average. Needs to be specified in combination with movingAverageFreq. If the price is lower than the moving average, the script will pause.</td>
+  <td><code>int</code>, e.g. 10 will calculate the 10 movingAverageFreq price moving average</td>
+  </tr>
+  <tr>
+  <td>movingAverageFreq (Optional)</td>
+  <td>The number of seconds in each period when calculating price moving average. Needs to be specified in combination with movingAverageN. If the price is lower than the moving average, the script will pause.</td>
+  <td><code>int</code>, e.g. 300 will calculate the 5 minutes movingAverageN price moving average</td>
+  </tr>
+  <tr>
   <td>dustValue (Optional)</td>
   <td>The best orderbook asks will be ignored if their amount in base currency are lower than dustValue. The script will determine the best price level for the maintained ask to be right below the price of the first bid that has an amount higher than dustValue</td>
   <td><code>float</code></td>
