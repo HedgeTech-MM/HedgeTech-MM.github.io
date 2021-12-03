@@ -1362,39 +1362,39 @@ html {
   </tr>
   <tr>
   <td>avoidSwing (Optional)</td>
-  <td>Whether to turn on the price swing protection mechanism. Default is False</td>
+  <td>Whether to turn on the price swing protection mechanism. The mechanism aims at protecting from adverse consequences during large price movements while a swap is confirming. Default is False</td>
   <td>
   <code>bool</code></td>
   </tr>
   <tr>
   <td>avoidSwingN (Optional)</td>
-  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>The number of price data points to calculate price moving average. Default is 60</td>
   <td>
-  <code>float</code>, e.g. <code>2</code> means twice</td>
+  <code>int</code></td>
   </tr>
   <tr>
   <td>avoidSwingMinN (Optional)</td>
-  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>The minimum number of price data points to detect price swings. If the number of recorded price data points is less than avoidSwingMinN, the script will not start. Default is 15</td>
   <td>
-  <code>float</code>, e.g. <code>2</code> means twice</td>
+  <code>int</code></td>
   </tr>
   <tr>
   <td>avoidSwingFreq (Optional)</td>
-  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>The number of seconds between recorded price data points. Default is 60</td>
   <td>
-  <code>float</code>, e.g. <code>2</code> means twice</td>
+  <code>int</code></td>
   </tr>
   <tr>
   <td>avoidSwingRidOutlier (Optional)</td>
-  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>The number of extreme high/low values to be ignored when calculating rolling average and standard deviation. Default is 2</td>
   <td>
-  <code>float</code>, e.g. <code>2</code> means twice</td>
+  <code>int</code></td>
   </tr>
   <tr>
   <td>avoidSwingStdDevMulti (Optional)</td>
-  <td>Defines a multiple of the gas fee that should be covered by the profit margin when determining minimum swap volume. Default is 3</td>
+  <td>The number of standard deviations away from the rolling average to be considered as price swing. Default is 2</td>
   <td>
-  <code>float</code>, e.g. <code>2</code> means twice</td>
+  <code>float</code></td>
   </tr>
   <tr>
   <td>stopConditionBase (Optional)</td>
