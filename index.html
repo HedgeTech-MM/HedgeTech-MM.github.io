@@ -1025,12 +1025,12 @@ html {
   <tr>
   <td>baseValue</td>
   <td>The USD value of the base currency</td>
-  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko; pass an <a href="#create-an-api-expression">api expression</a> to automatically read a value from a third party api.</td>
+  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko; pass an <a href="#create-an-api-expression">api expression</a> to automatically read a value from a third party api; pass a <code>stableExpression</code> that resolves to a <code>float</code> value between <code>0</code> and <code>1</code>, see <a href="#stable-expression">Smartswap Expression</a>.</td>
   </tr>
   <tr>
   <td>quoteValue</td>
   <td>The USD value of the quote currency</td>
-  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko; pass an <a href="#create-an-api-expression">api expression</a> to automatically read a value from a third party api.</td>
+  <td>Pass <code>int</code> or <code>float</code> to define a stable value; pass <code>market</code> for the value to be automatically adjusted to the price reported by CoinGecko; pass an <a href="#create-an-api-expression">api expression</a> to automatically read a value from a third party api; pass a <code>stableExpression</code> that resolves to a <code>float</code> value between <code>0</code> and <code>1</code>, see <a href="#stable-expression">Smartswap Expression</a>..</td>
   </tr>
   <tr>
   <td>askNum</td>
@@ -1081,6 +1081,13 @@ html {
   <td><code>bool</code>, input <code>True</code> to turn it on</td>
   </tr>
   <tr>
+  <td>apis (Optional)</td>
+  <td>A sequence of external APIs that can be used in <code>smartswapExpression</code>
+  </td>
+  <td>Sequence of <code>apiExpression</code> separated by <code>,</code>, see <a href="#stable-expression">API Expression</a>
+  </td>
+  </tr>
+  <tr>
   <td>stopConditionBase (Optional)</td>
   <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
@@ -1092,7 +1099,26 @@ html {
   </tr>
   </tbody>
   </table>
-
+  <h4>
+  <a id="user-content-stable-expression" class="anchor" name="stable-expression" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Stable Expression</h4>
+  <p><code>stableExpression</code> is a special expression that is used for the <code>stable</code> script class. It follows standard <code>python</code> syntax and can use the following expression variables:</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Expression Variables</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>apiValues</td>
+  <td>A <code>list</code> of values that are retrieved from third party APIs defined in the config parameter <code>apis</code>
+  </td>
+  <td><code>list</code></td>
+  </tr>
+  </tbody>
+  </table>
   <h4>
   <a id="user-content-create-an-api-expression" class="anchor" name="create-an-api-expression" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create an API Expression</h4>
   <p>An API expression is used to assign the <code>baseValue</code> and/or <code>quoteValue</code> to a value automatically read from a third party API. Only <a href="https://restfulapi.net/" rel="nofollow">REST APIs</a> with a <code>json</code> response body are allowed.</p>
