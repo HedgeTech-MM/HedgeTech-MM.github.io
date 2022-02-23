@@ -1578,7 +1578,7 @@ html {
   </tr>
   </tbody>
   </table>
-  <h3>
+<!--   <h3>
   <a id="user-content-poolsarb" class="anchor" name="poolsarb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pools Arbitrage</h3>
   <p>Purpose: For a given base currency, the <code>poolsarb</code> strategy can do arbitrage between liquidity pools.
   <br>Details: The script will look for all arbitrage opportunities for a given base currency. Arbitrage opportunities are defined by the threshold parameter.
@@ -1611,14 +1611,14 @@ html {
   <td>The minimum price difference for arbitrage to make profits. The threshold has to cover the trading fees - both swap fees and liquidity providers fees on all pools along both routes - and withdrawal fees combined</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
-  </tr>
+  </tr> -->
   <!-- <tr>
   <td>minSwapVolume</td>
   <td>Minimum volume in base currency per swap transaction on the liquidity pool. It is important to set a sufficient amount, i.e. significantly (100 times and above) higher than swap (networks) fees and liquidity provider fees on all pools along both routes.</td>
   <td>
   <code>float</code></td>
   </tr> -->
-  <tr>
+<!--   <tr>
   <td>maxGasPrice</td>
   <td>Maximum gas price in GWEI. If the gas price exeeds this amount, the script will pause</td>
   <td>
@@ -1629,14 +1629,14 @@ html {
   <td>If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is one third of threshold.</td>
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
-  </tr>
+  </tr> -->
 <!--   <tr>
   <td>maxSwapVolume (Optional)</td>
   <td>Maximum volume in base currency per swap transaction on the liquidity pool</td>
   <td>
   <code>float</code></td>
   </tr> -->
-  <tr>
+<!--   <tr>
   <td>stopConditionBase (Optional)</td>
   <td>The stop condition for base (input) currency. If the total base currency balance for either wallets is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
@@ -1645,6 +1645,96 @@ html {
   <td>stopConditionQuote (Optional)</td>
   <td>The stop condition for quote (output) currency. If the total quote currency balance for either wallets is lower than the threshold, the script will pause</td>
   <td><code>float</code></td>
+  </tr>
+  </tbody>
+  </table> -->
+  <h3>
+  <a id="user-content-poolsarb" class="anchor" name="poolsarb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pools Arbitrage</h3>
+  <p>Purpose: For a given base currency, the <code>poolsarb</code> strategy can do arbitrage between liquidity pools.
+  <br>Details: The script will look for all arbitrage opportunities for a given base currency. Arbitrage opportunities are defined by the threshold parameter.
+  <br>Warning: Rebalance will be needed at times between the main wallet and secondary wallet. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below). This is a relatively advanced script class, please reach out if more information is necessary before implementing it.
+  <br>Use cases: Generate profits from price discrepancies between pools for a given base currency.</p>
+  <p>Account(s): Both main wallet and secondary wallet (note: both accounts need to be created with associated exchange <code>evm</code> on HTClient as this script support liquidity pools based on EVM chains). Wallets first need to follow the instructions on the liquidity pools to approve swaping for the desired pairs.</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Parameters</th>
+  <th>Description</th>
+  <th>Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>routeMain</td>
+  <td>For the Main account. The AMM name and column followed by a comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. On Uniswap, if the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route. On Pancakeswap, if the base or quote asset is BNB, input <code>bnb</code> as either the begining or the end of the route. The destination currencies on both routes have to have the same value in USD (e.g. stablecoin on both). Note: for AMM based on the uniswap v3 model (allowing for liquidity concentration), specify the fee tier in between the tokens that constitute a given pool</td>
+  <td>
+  Sequence of <code>str</code> separated by <code>,</code>. On Uniswap: if ETH is a base or quote, input <code>eth</code>; if ETH is found along the route, input the WETH address instead. On Pancakeswap: if BNB is a base or quote, input <code>bnb</code>; if BNB is found along the route, input the WBNB address instead. Example for the ETH/USDT pool on Uniswap v2: <code>uniswap: eth, 0xdac17f958d2ee523a2206206994597c13d831ec7</code>. Example for the 0.3% fee ETH/USDT pool on Uniswap v3: <code>uniswap: eth, 0.0003, 0xdac17f958d2ee523a2206206994597c13d831ec7</code></td>
+  </tr>
+  <tr>
+  <td>routeSecondary</td>
+  <td>For the Secondary account. The AMM name and column followed by a comma separated sequence of token addresses from base asset to quote asset. The route can be found on the liquidity pool's user interface. On Uniswap, if the base or quote asset is ETH, input <code>eth</code> as either the begining or the end of the route. On Pancakeswap, if the base or quote asset is BNB, input <code>bnb</code> as either the begining or the end of the route. The destination currencies on both routes have to have the same value in USD (e.g. stablecoin on both). Note: for AMM based on the uniswap v3 model (allowing for liquidity concentration), specify the fee tier in between the tokens that constitute a given pool</td>
+  <td>
+  Sequence of <code>str</code> separated by <code>,</code>. On Uniswap: if ETH is a base or quote, input <code>eth</code>; if ETH is found along the route, input the WETH address instead. On Pancakeswap: if BNB is a base or quote, input <code>bnb</code>; if BNB is found along the route, input the WBNB address instead. Example for the ETH/USDT pool on Uniswap v2: <code>uniswap: eth, 0xdac17f958d2ee523a2206206994597c13d831ec7</code>. Example for the 0.3% fee ETH/USDT pool on Uniswap v3: <code>uniswap: eth, 0.0003, 0xdac17f958d2ee523a2206206994597c13d831ec7</code></td>
+  </tr>
+  <tr>
+  <td>gasCovered (Optional)</td>
+  <td>Multiplier of gas fee (gas fee = gas spent*gas price, for both legs of and arbitrage transaction combined) to be covered during an arbitrage, default is 1. Should be greater or equal to 1 (to break even or make profits)</td>
+  <td>
+  <code>float</code>, greater or equal to 1</td>
+  </tr>
+  <tr>
+  <td>toleranceMain (Optional)</td>
+  <td>For the main account. If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is 0.5%</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>toleranceSecondary (Optional)</td>
+  <td>For the secondary account. If the price changes by more than the tolerance within the confirmation window, the swap will revert to ensure no losses (to frontrunning using gaz price auction for example). Default is 0.5%</td>
+  <td>
+  <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>timeoutMain (Optional)</td>
+  <td>For the main account. Defines a time limit for a non validated swap to time out. If time out is hit, the script will look for the next available opportunity to settle the imbalance</td>
+  <td>
+  <code>int</code>, number of seconds, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>timeoutSecondary (Optional)</td>
+  <td>For the secondary account. Defines a time limit for a non validated swap to time out. If time out is hit, the script will look for the next available opportunity to settle the imbalance</td>
+  <td>
+  <code>int</code>, number of seconds, e.g. <code>0.01</code> means 1%</td>
+  </tr>
+  <tr>
+  <td>nTickGroups (Optional)</td>
+  <td>Number of words (each word having 256 ticks) to consider when scanning liquidity. If nTickGroups = n, the script will scan 2n+1 tick words (the current tick word, n words above, n words below). Thus, the price interval in percent that the script scans is: currentWord*1.0001^(256*tickSpacing)^n up and currentWord/1.0001^(256*tickSpacing)^n down, with tickSpacing depending on a given pool setting (the smart contract of a given pool contains tick spacing information). Should be greater or equal to 1. Default is 1</td>
+  <td>
+  <code>int</code>, greater or equal to 1</td>
+  </tr>
+  <tr>
+  <td>forceSettle (Optional)</td>
+  <td>Turn on to force the settlement of imbalance blindly, regardless of price (i.e. potentially at a loss), in case one swap (one leg of the arbitrage transaction) succeeds but the other fails. Default is <code>False</code></td>
+  <td>
+  <code>bool</code></td>
+  </tr>
+  <tr>
+  <td>imbalanceSwapMaxGasPriceMain (Optional)</td>
+  <td>For the main account. Defines the max gas price in gwei for the settlement of imbalance in case one swap (one leg of the arbitrage transaction) succeeds but the other fails. Default is 100</td>
+  <td>
+  <code>int</code></td>
+  </tr>
+  <tr>
+  <td>imbalanceSwapMaxGasPriceSecondary (Optional)</td>
+  <td>For the secondary account. Defines the max gas price in gwei for the settlement of imbalance in case one swap (one leg of the arbitrage transaction) succeeds but the other fails. Default is 100</td>
+  <td>
+  <code>int</code></td>
+  </tr>
+  <tr>
+  <td>gasLimitMultiplier (Optional)</td>
+  <td>The script estimates the gas limit to set for each leg of the arbitrage transaction. If the gas limit is exhausted, the transaction will fail and the gas spent is not refunded by the validator. The multiplier is the same for each leg of the arbitrage transaction. Should be greater or equal to 1. Default is 1.2</td>
+  <td>
+  <code>float</code>, greater or equal to 1</td>
   </tr>
   </tbody>
   </table>
@@ -2215,7 +2305,7 @@ html {
   <a id="user-content-accounts" class="anchor" name="accounts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Accounts</h3>
   <p>Accounts are the exchanges accounts. Accounts also more broadly designate wallets connected to liquidity pools (note that you first need to approve a wallet for swaping on given pair of a liquidity pool before being able to use it on HTClient).
   <br>An account is defined by: the exchange it is on and its API keys. Some exchanges may require a trading password; others may require to specify if the main account is to be used (input <code>$main</code> in the relevant field in HTClient's account page) or if a subaccount is to be used; yet others (such as liquidity pools) require wallet information.</p>
-  <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://pro.coinbase.com/" rel="nofollow">coinbase</a>, <a href="https://www.kraken.com/" rel="nofollow">kraken</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.bithumb.com/" rel="nofollow">bithumb (Korea and global)</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://uniswap.org/" rel="nofollow">uniswap (V2, V3)</a>, <a href="https://www.bybit.com/" rel="nofollow">bybit</a>, <a href="https://www.traderjoexyz.com/" rel="nofollow">traderjoe</a>, <a href="https://sushi.com/" rel="nofollow">sushiswap</a>, <a href="https://www.pancakeswap.finance/" rel="nofollow">pancakeswap</a>, <a href="https://www.gate.io/" rel="nofollow">gate.io</a>, <a href="https://www.okex.com/" rel="nofollow">okex</a>, <a href="https://crypto.com/exchange" rel="nofollow">crypto.com</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://ftx.com/" rel="nofollow">ftx</a>, <a href="https://alcor.exchange/" rel="nofollow">alcor</a>, <a href="https://poloniex.com/" rel="nofollow">poloniex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://ascendex.com/" rel="nofollow">ascendex</a>, <a href="https://upbit.com/home" rel="nofollow">upbit</a>, <a href="https://probit.com/" rel="nofollow">probit</a>, <a href="https://www.mexc.com/" rel="nofollow">mexc</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://www.xt.com/" rel="nofollow">xt.com</a>, <a href="https://www.fmfw.io/" rel="nofollow">fmfw</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.whitebit.com/" rel="nofollow">whitebit</a>, <a href="https://www.gopax.com/" rel="nofollow">gopax</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.bitbns.com/" rel="nofollow">bitbns</a>, <a href="https://www.coinsbit.io/" rel="nofollow">coinsbit</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://apeswap.finance/" rel="nofollow">apeswap (bsc)</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://www.hoo.com/" rel="nofollow">hoo</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw.com</a>, <a href="https://btse.com/" rel="nofollow">btse</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bhex.com/" rel="nofollow">bhex</a>, <a href="https://www.bitmart.com/" rel="nofollow">bitmart</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>, <a href="https://www.biki.cc/" rel="nofollow">biki</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://www.nbx.com/" rel="nofollow">nbx</a>, <a href="https://www.mandala.exchange/" rel="nofollow">mandala</a>, <a href="https://www.mexo.io/" rel="nofollow">mexo</a>, <a href="https://pangolin.exchange/" rel="nofollow">pangolin</a>, <a href="https://quickswap.exchange/" rel="nofollow">quickswap</a>.</p>
+  <p>The exchanges currently supported are: <a href="https://www.binance.com/" rel="nofollow">binance</a>, <a href="https://pro.coinbase.com/" rel="nofollow">coinbase</a>, <a href="https://www.kraken.com/" rel="nofollow">kraken</a>, <a href="https://www.huobi.com/" rel="nofollow">huobi</a>, <a href="https://www.kucoin.com/" rel="nofollow">kucoin</a>, <a href="https://www.bithumb.com/" rel="nofollow">bithumb (Korea and global)</a>, <a href="https://www.bitfinex.com/" rel="nofollow">bitfinex</a>, <a href="https://uniswap.org/" rel="nofollow">uniswap (V2, V3, arbitreum)</a>, <a href="https://www.bybit.com/" rel="nofollow">bybit</a>, <a href="https://www.traderjoexyz.com/" rel="nofollow">traderjoe</a>, <a href="https://sushi.com/" rel="nofollow">sushiswap</a>, <a href="https://www.pancakeswap.finance/" rel="nofollow">pancakeswap</a>, <a href="https://www.gate.io/" rel="nofollow">gate.io</a>, <a href="https://www.okx.com/" rel="nofollow">okx</a>, <a href="https://crypto.com/exchange" rel="nofollow">crypto.com</a>, <a href="https://bittrex.com/" rel="nofollow">bittrex</a>, <a href="https://ftx.com/" rel="nofollow">ftx</a>, <a href="https://alcor.exchange/" rel="nofollow">alcor</a>, <a href="https://poloniex.com/" rel="nofollow">poloniex</a>, <a href="https://www.liquid.com/" rel="nofollow">liquid</a>, <a href="https://ascendex.com/" rel="nofollow">ascendex</a>, <a href="https://upbit.com/home" rel="nofollow">upbit</a>, <a href="https://probit.com/" rel="nofollow">probit</a>, <a href="https://www.mexc.com/" rel="nofollow">mexc</a>, <a href="https://hitbtc.com/" rel="nofollow">hitbtc</a>, <a href="https://www.okcoin.com/" rel="nofollow">okcoin</a>, <a href="https://www.xt.com/" rel="nofollow">xt.com</a>, <a href="https://www.fmfw.io/" rel="nofollow">fmfw</a>, <a href="https://www.digifinex.com/" rel="nofollow">digifinex</a>, <a href="https://www.bitget.com/" rel="nofollow">bitget</a>, <a href="https://www.whitebit.com/" rel="nofollow">whitebit</a>, <a href="https://www.gopax.com/" rel="nofollow">gopax</a>, <a href="https://www.bitrue.com/" rel="nofollow">bitrue</a>, <a href="https://www.bitbns.com/" rel="nofollow">bitbns</a>, <a href="https://www.coinsbit.io/" rel="nofollow">coinsbit</a>, <a href="https://www.cointiger.com/" rel="nofollow">cointiger</a>, <a href="https://apeswap.finance/" rel="nofollow">apeswap (bsc)</a>, <a href="https://latoken.com/" rel="nofollow">latoken</a>, <a href="https://www.coineal.com/" rel="nofollow">coineal</a>, <a href="https://www.hoo.com/" rel="nofollow">hoo</a>, <a href="https://www.lbank.info/" rel="nofollow">lbank</a>, <a href="https://www.bitforex.com/" rel="nofollow">bitforex</a>, <a href="https://www.bw.com/" rel="nofollow">bw.com</a>, <a href="https://btse.com/" rel="nofollow">btse</a>, <a href="https://dragonex.io/" rel="nofollow">dragonex</a>, <a href="https://www.bhex.com/" rel="nofollow">bhex</a>, <a href="https://www.bitmart.com/" rel="nofollow">bitmart</a>, <a href="https://www.stex.com/" rel="nofollow">stex</a>, <a href="https://www.biki.cc/" rel="nofollow">biki</a>, <a href="https://vitex.net/" rel="nofollow">vitex</a>, <a href="https://idex.market/" rel="nofollow">idex</a>, <a href="https://www.coinall.com/" rel="nofollow">coinall</a>, <a href="https://bispex.com/" rel="nofollow">bispex</a>, <a href="https://smartvalor.com/" rel="nofollow">smartvalor</a>, <a href="https://www.nbx.com/" rel="nofollow">nbx</a>, <a href="https://www.mandala.exchange/" rel="nofollow">mandala</a>, <a href="https://www.mexo.io/" rel="nofollow">mexo</a>, <a href="https://pangolin.exchange/" rel="nofollow">pangolin</a>, <a href="https://quickswap.exchange/" rel="nofollow">quickswap</a>, <a href="https://pro.coinlist.co" rel="nofollow">coinlist pro</a>, <a href="http://exchange.lcx.com/" rel="nofollow">lcx</a>.</p>
   <h3>
   <a id="user-content-scripts" class="anchor" name="scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scripts</h3>
   <p>Scripts are the algorithms that run on our servers.
