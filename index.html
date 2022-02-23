@@ -1708,7 +1708,7 @@ html {
   </tr>
   <tr>
   <td>nTickGroups (Optional)</td>
-  <td>Number of words (each word having 256 ticks) to consider when scanning liquidity. If nTickGroups = n, the script will scan 2n+1 tick words (the current tick word, n words above, n words below). Thus, the price interval in percent that the script scans is: currentWord*1.0001^(256*tickSpacing)^n up and currentWord/1.0001^(256*tickSpacing)^n down, with tickSpacing depending on a given pool setting (the smart contract of a given pool contains tick spacing information). Should be greater or equal to 1. Default is 1</td>
+  <td>Number of words (each word having 256*tickSpacing ticks) to consider when scanning liquidity. If nTickGroups = n, the script will scan 2n+1 tick words (the current tick word, n words above, n words below). Thus, the price interval in percent that the script scans is: currentWord*1.0001^(256*tickSpacing)^n up and currentWord/1.0001^(256*tickSpacing)^n down, with tickSpacing depending on a given pool setting (the smart contract of a given pool contains tick spacing information). Should be greater or equal to 1. Default is 1</td>
   <td>
   <code>int</code>, greater or equal to 1</td>
   </tr>
