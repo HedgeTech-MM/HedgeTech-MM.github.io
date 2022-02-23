@@ -1654,7 +1654,7 @@ html {
   <br>Details: The script will look for all arbitrage opportunities for a given base currency. Arbitrage opportunities are defined by the threshold parameter.
   <br>Warning: Rebalance will be needed at times between the main wallet and secondary wallet. Losses will be incurred if the threshold parameter is not large enough to cover fees (see below). This is a relatively advanced script class, please reach out if more information is necessary before implementing it.
   <br>Use cases: Generate profits from price discrepancies between pools for a given base currency.</p>
-  <p>Account(s): Both main wallet and secondary wallet (note: both accounts need to be created with associated exchange <code>evm</code> on HTClient as this script support liquidity pools based on EVM chains). Wallets first need to follow the instructions on the liquidity pools to approve swaping for the desired pairs. Note: must use two different wallets on the same chain on two different liquidity pools (but can use 1 wallet on different chains)</p>
+  <p>Account(s): Both main wallet and secondary wallet (note: both accounts need to be created with associated exchange <code>evm</code> on HTClient as this script support liquidity pools based on EVM chains). Wallets first need to follow the instructions on the liquidity pools to approve swaping for the desired pairs. Note: must use two different wallets on the same chain on two different liquidity pools to avoid frontrunning by MEV bots and/or losses due to confirmation time (but can use 1 wallet for both accounts if on different chains).</p>
   <table>
   <thead>
   <tr>
