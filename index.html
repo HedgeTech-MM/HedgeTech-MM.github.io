@@ -1243,10 +1243,10 @@ html {
   </tr>
   <tr>
   <td>settlementModel (Optional)</td>
-  <td>The parameter determines how to place the hedging orders on the secondary account.</td>
+  <td>The parameter determines how to place the hedging orders on the secondary account. Default is <code>feeAdjustedfillPrice</code></td>
   <td><<code>marketPrice</code>: hedging orders will be market orders with a maximum slippage of divergence
 . <code>fillPrice</code>: hedging orders will be limit orders at the price where the price where the orders on the main account are filled. <code>feeAdjustedfillPrice</code>: hedging orders will be limit orders at the price where the price where the orders on the main account are filled, plus a markup of both exchange fees combined. <code>divergenceAdjustedFillPrice</code>: hedging orders will be limit orders at the price where the price where the orders on the main account are filled, plus a markup of divergence
-. (Default value <code>feeAdjustedfillPrice</code>)</td>
+.</td>
   </tr>
   <tr>
   <td>exchangeFeeRateMain (Optional)</td>
