@@ -1243,9 +1243,9 @@ html {
   </tr>
   <tr>
   <td>settlementModel (Optional)</td>
-  <td>The parameter determines how to place the hedging orders on the secondary account. Default is <code>feeAdjustedfillPrice</code></td>
-  <td><<code>marketPrice</code>: hedging orders will be market orders with a maximum slippage of divergence
-. <code>fillPrice</code>: hedging orders will be limit orders at the price where the price where the orders on the main account are filled. <code>feeAdjustedfillPrice</code>: hedging orders will be limit orders at the price where the price where the orders on the main account are filled, plus a markup of both exchange fees combined. <code>divergenceAdjustedFillPrice</code>: hedging orders will be limit orders at the price where the price where the orders on the main account are filled, plus a markup of divergence.</td>
+  <td>The parameter determines how to place the hedging orders on the secondary account. Default is <code>feeAdjustedfillPrice</code>
+  </td>
+  <td><<code>marketPrice</code>: hedging orders will be market orders with a maximum slippage of divergence. <code>fillPrice</code>: hedging orders will be limit orders at the price where the orders on the main account are filled. <code>feeAdjustedfillPrice</code>: hedging orders will be limit orders at the price where the orders on the main account are filled, plus a markup of both exchange fees combined. <code>divergenceAdjustedFillPrice</code>: hedging orders will be limit orders at the price where the orders on the main account are filled, plus a markup of divergence.</td>
   </tr>
   <tr>
   <td>exchangeFeeRateMain (Optional)</td>
@@ -1259,7 +1259,7 @@ html {
   <td>
   <code>float</code>, percentage, e.g. <code>0.01</code> means 1%</td>
   </tr>
-  <tr>
+<!--   <tr>
   <td>baseName (Optional)</td>
   <td>Full name of the base currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive</td>
   <td><code>str</code></td>
@@ -1268,15 +1268,25 @@ html {
   <td>quoteName (Optional)</td>
   <td>Full name of the quote currency. Must specify if multiple currencies listed as the same symbol on CoinGecko. Case sensitive</td>
   <td><code>str</code></td>
-  </tr>
+  </tr> -->
   <tr>
-  <td>stopConditionBase (Optional)</td>
-  <td>The stop condition for base currency: if the total base currency balance is lower than the threshold, the script will pause. Same value applies to both main and secondary</td>
+  <td>stopConditionBaseMain (Optional)</td>
+  <td>The stop condition for base currency for the main account: if the total base currency balance is lower than the threshold, the script will pause. Same value applies to both main and secondary</td>
   <td><code>float</code></td>
   </tr>
   <tr>
-  <td>stopConditionQuote (Optional)</td>
-  <td>The stop condition for quote currency: if the total quote currency balance is lower than the threshold, the script will pause. Same value applies to both main and secondary</td>
+  <td>stopConditionQuoteMain (Optional)</td>
+  <td>The stop condition for quote currency for the main account: if the total quote currency balance is lower than the threshold, the script will pause. Same value applies to both main and secondary</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionBaseSecondary (Optional)</td>
+  <td>The stop condition for base currency for the secondary account: if the total base currency balance is lower than the threshold, the script will pause. Same value applies to both main and secondary</td>
+  <td><code>float</code></td>
+  </tr>
+  <tr>
+  <td>stopConditionQuoteSecondary (Optional)</td>
+  <td>The stop condition for quote currency for the secondary account: if the total quote currency balance is lower than the threshold, the script will pause. Same value applies to both main and secondary</td>
   <td><code>float</code></td>
   </tr>
   </tbody>
